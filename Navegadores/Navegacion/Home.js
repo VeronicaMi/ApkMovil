@@ -6,11 +6,11 @@ import {
     CheckBox, Image
 } from 'react-native';
 //expo install react-native-maps
-//import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 //expo install expo-location
-//import * as Location from 'expo-location';
+import * as Location from 'expo-location';
 //expo install expo-permissions
-//import * as Permissions from 'expo-permissions';
+import * as Permissions from 'expo-permissions';
 //expo install expo-constants
 //import {Constants, MapView, Location, Permissions} from 'expo';
 import call from 'react-native-phone-call';
@@ -60,7 +60,15 @@ export default class Home extends Component{
         return(
           <ScrollView>
           <View style = {styles.container}>
-            
+          <MapView style={{ alignSelf: 'stretch', height: 400, margin: 15 }}
+            region={this.state.mapRegion}
+            onRegionChange={this._handleMapRegionChange}>
+                <MapView.Marker
+                coordinate={this.state.marker.coords}
+                title="My Marker"
+                description="Some description"
+                />
+            </MapView>
 
                 <View style = {styles.contIcon}>
                       <TouchableOpacity 
