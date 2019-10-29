@@ -81,9 +81,14 @@ class Chat extends Component{
               {/*comentario*/}
 
               <View style={styles.textInputContainer} >
-                
+              
+              <TouchableOpacity style ={styles.icono}
+                                  onPress = {() => alert("Hola")}>
+                    <Ionicons name="ios-camera" size = {32} color = "#497580" />
+                </TouchableOpacity>
+
                 <TextInput style={styles.input}
-                    placeholder = 'Mensaje'
+                    placeholder = '  Mensaje'
                     onChangeText = {(text) => this.setState({mensaje: text})}
                     value = {this.state.mensaje}
                 />
