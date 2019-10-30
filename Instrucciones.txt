@@ -1,0 +1,20 @@
+Instrucciones
+
+
+npm install react-navigation
+npm install react-navigation-stack
+npm install react-navigation-drawer
+npm install native-base
+expo install react-native-gesture-handler react-native-reanimated
+expo install react-native-maps
+expo install expo-location
+expo install expo-permissions
+expo install expo-constants
+expo install expo-camera
+npm install --save react-native-phone-call
+npm i react-native-app-intro-slider --save
+npm install react-native-datepicker --save
+npm i react-native-check-box --save
+npm i react-native-simple-radio-button --save
+
+npm i --save react-native-meteor

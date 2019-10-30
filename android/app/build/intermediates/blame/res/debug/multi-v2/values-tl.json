@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-tl\\values-tl.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\VeronicaMi\\.gradle\\caches\\transforms-1\\files-1.1\\jetified-play-services-basement-16.0.1.aar\\92bcab2b6ce7f75d77315b42e757f51e\\res\\values-tl\\values.xml",
+                    "source": "C:\\Users\\VeronicaMi\\.gradle\\caches\\transforms-1\\files-1.1\\jetified-play-services-basement-16.2.0.aar\\cb92f6213c9027d73d45c900e3b4d285\\res\\values-tl\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\VeronicaMi\\.gradle\\caches\\transforms-1\\files-1.1\\jetified-play-services-base-16.0.1.aar\\2574575f077a25ecf855e1aa54e5e4c6\\res\\values-tl\\values.xml",
+                    "source": "C:\\Users\\VeronicaMi\\.gradle\\caches\\transforms-1\\files-1.1\\jetified-play-services-base-16.1.0.aar\\f79aabcf4d957a4a81a21859e358d633\\res\\values-tl\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

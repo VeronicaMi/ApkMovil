@@ -1,4 +1,4 @@
-#Tue Oct 29 16:05:12 CST 2019
+#Wed Oct 30 09:47:03 CST 2019
 base.10=C\:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\19
 base.9=C\:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\17
 base.8=C\:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
@@ -10,6 +10,7 @@ base.3=C\:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermed
 base.2=C\:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\25
 base.1=C\:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\23
 base.0=C\:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\21
+path.27=classes.dex
 path.26=classes.dex
 path.25=classes.dex
 path.24=classes.dex
@@ -47,6 +48,7 @@ path.13=classes.dex
 path.12=classes.dex
 path.11=classes.dex
 path.10=classes.dex
+renamed.27=classes28.dex
 renamed.26=classes27.dex
 renamed.25=classes26.dex
 renamed.24=classes25.dex
@@ -64,6 +66,7 @@ renamed.13=classes14.dex
 renamed.12=classes13.dex
 renamed.11=classes12.dex
 renamed.10=classes11.dex
+base.27=C\:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\27
 base.26=C\:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\7
 base.25=C\:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\9
 base.24=C\:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1

@@ -1,12 +1,13 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-48:12
-INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-48:12
-INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-48:12
-INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-48:12
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-52:12
+INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-52:12
+INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-52:12
+INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-52:12
 MERGED from [:react-native-screens] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-screens\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-reanimated] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-reanimated\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-gesture-handler] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-maps] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-12:12
 MERGED from [com.facebook.react:react-native:0.59.10] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-react-native-0.59.10.aar\54e2032770be06d71b436610372b60c2\AndroidManifest.xml:2:1-13:12
 MERGED from [:expo-permissions] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-permissions\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\appcompat-1.0.0.aar\8cb48e8411942492e2ad71d39b2fc981\AndroidManifest.xml:17:1-22:12
@@ -32,11 +33,12 @@ MERGED from [:unimodules-core] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_module
 MERGED from [:unimodules-image-loader-interface] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\unimodules-image-loader-interface\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:unimodules-sensors-interface] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\unimodules-sensors-interface\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.transition:transition:1.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\transition-1.0.0.aar\d204d1b577852b1aa2e9ce246d34dd32\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:17:1-38:12
 MERGED from [com.google.android.gms:play-services-location:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-location-16.0.0.aar\cac44bc4cbd2201c49a775397f0adf3d\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.0.1.aar\2574575f077a25ecf855e1aa54e5e4c6\AndroidManifest.xml:17:1-29:12
-MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-16.0.0.aar\fc49d8d79942b176c90917eadbc72e1f\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-base:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.1.0.aar\f79aabcf4d957a4a81a21859e358d633\AndroidManifest.xml:17:1-29:12
 MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-tasks-16.0.1.aar\f4912c05614d9da36af89cf65f6f5443\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.0.1.aar\92bcab2b6ce7f75d77315b42e757f51e\AndroidManifest.xml:17:1-28:12
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-16.0.0.aar\fc49d8d79942b176c90917eadbc72e1f\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:16.2.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.2.0.aar\cb92f6213c9027d73d45c900e3b4d285\AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\legacy-support-v4-1.0.0.aar\ea6cdcb8fb1cd4bbe826998e9d42008c\AndroidManifest.xml:17:1-22:12
 MERGED from [com.github.bumptech.glide:glide:4.9.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-glide-4.9.0.aar\c1b1dc2a01c852fe2131bb0d98cf4de8\AndroidManifest.xml:2:1-12:12
 MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\fragment-1.0.0.aar\c5b7a5493161e779f389b594201df2d2\AndroidManifest.xml:17:1-22:12
@@ -73,29 +75,34 @@ MERGED from [com.facebook.fresco:drawee:1.10.0] C:\Users\VeronicaMi\.gradle\cach
 MERGED from [com.facebook.fresco:imagepipeline:1.10.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-imagepipeline-1.10.0.aar\a3e850ad0c37e7d621acb7f848d035f1\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-imagepipeline-base-1.10.0.aar\fa301ca60b6c9a009fd8e92db2e43760\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\soloader-0.6.0.aar\9df399ab0cf01c436260c5fdc3585522\AndroidManifest.xml:2:1-13:12
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-android-maps-utils-0.5.aar\f3ccd9e1b17742d0d00217fe7defb519\AndroidManifest.xml:2:1-13:12
 MERGED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:2:1-30:12
 MERGED from [com.facebook.fresco:fbcore:1.10.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-fbcore-1.10.0.aar\b07326bea03d2fef3d4dd49942f41dcd\AndroidManifest.xml:2:1-9:12
-INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-48:12
-INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-48:12
-INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-48:12
+INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-52:12
+INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-52:12
+INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-52:12
 	package
 		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:2:5-27
 		INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-48:12
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-52:12
 		INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-48:12
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:1-52:12
 		INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:1:11-69
 uses-permission#android.permission.INTERNET
 ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:4:5-67
+MERGED from [:react-native-maps] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-67
+MERGED from [:react-native-maps] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-67
 MERGED from [:expo-file-system] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-67
 MERGED from [:expo-file-system] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-67
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:24:5-67
 	android:name
 		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:4:22-64
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
@@ -103,99 +110,103 @@ ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidMan
 	android:name
 		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:5:22-75
 uses-permission#android.permission.MANAGE_DOCUMENTS
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:8:5-75
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:9:5-75
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:8:22-72
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:9:22-72
 uses-permission#android.permission.READ_INTERNAL_STORAGE
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:9:5-80
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:10:5-80
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:9:22-77
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:10:22-77
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:10:5-75
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:11:5-75
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:10:22-72
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:11:22-72
 uses-permission#android.permission.USE_FINGERPRINT
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:11:5-74
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:12:5-74
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:11:22-71
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:12:22-71
 uses-permission#android.permission.VIBRATE
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:12:5-66
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:13:5-66
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:12:22-63
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:13:22-63
 uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:13:5-80
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:14:5-80
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:13:22-77
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:14:22-77
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:16:5-81
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:17:5-81
+MERGED from [:react-native-maps] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-81
+MERGED from [:react-native-maps] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-81
 MERGED from [:expo-location] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-81
 MERGED from [:expo-location] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-81
 MERGED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:12:5-81
 MERGED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:12:5-81
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:16:22-78
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:17:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:17:5-79
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:18:5-79
 MERGED from [:expo-location] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-79
 MERGED from [:expo-location] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-79
 MERGED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:14:5-79
 MERGED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:14:5-79
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:17:22-76
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:18:22-76
 uses-permission#android.permission.CAMERA
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:18:5-65
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:19:5-65
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:18:22-62
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:19:22-62
 uses-permission#android.permission.READ_CONTACTS
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:19:5-72
-	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:19:22-69
-uses-permission#android.permission.READ_CALENDAR
 ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:20:5-72
 	android:name
 		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:20:22-69
+uses-permission#android.permission.READ_CALENDAR
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:21:5-72
+	android:name
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:21:22-69
 uses-permission#android.permission.WRITE_CALENDAR
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:21:5-73
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:22:5-73
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:21:22-70
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:22:22-70
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:22:5-80
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:23:5-80
 MERGED from [:expo-file-system] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:5-80
 MERGED from [:expo-file-system] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:5-80
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:22:22-77
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:23:22-77
 uses-permission#android.permission.RECORD_AUDIO
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:23:5-71
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:24:5-71
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:23:22-68
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:24:22-68
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:24:5-81
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:25:5-81
 MERGED from [:expo-file-system] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-81
 MERGED from [:expo-file-system] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-81
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:24:22-78
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:25:22-78
 uses-permission#android.permission.WRITE_SETTINGS
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:25:5-73
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:26:5-73
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:25:22-70
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:26:22-70
 application
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:28:5-46:19
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:29:5-50:19
 MERGED from [com.facebook.react:react-native:0.59.10] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-react-native-0.59.10.aar\54e2032770be06d71b436610372b60c2\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.59.10] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-react-native-0.59.10.aar\54e2032770be06d71b436610372b60c2\AndroidManifest.xml:11:5-20
 MERGED from [:expo-file-system] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:5-28:19
 MERGED from [:expo-file-system] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:5-28:19
 MERGED from [:expo-location] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-19:19
 MERGED from [:expo-location] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-19:19
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:30:5-36:19
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:30:5-36:19
 MERGED from [com.google.android.gms:play-services-location:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-location-16.0.0.aar\cac44bc4cbd2201c49a775397f0adf3d\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-location:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-location-16.0.0.aar\cac44bc4cbd2201c49a775397f0adf3d\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.0.1.aar\2574575f077a25ecf855e1aa54e5e4c6\AndroidManifest.xml:22:5-27:19
-MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.0.1.aar\2574575f077a25ecf855e1aa54e5e4c6\AndroidManifest.xml:22:5-27:19
-MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-16.0.0.aar\fc49d8d79942b176c90917eadbc72e1f\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-16.0.0.aar\fc49d8d79942b176c90917eadbc72e1f\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-base:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.1.0.aar\f79aabcf4d957a4a81a21859e358d633\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.1.0.aar\f79aabcf4d957a4a81a21859e358d633\AndroidManifest.xml:22:5-27:19
 MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-tasks-16.0.1.aar\f4912c05614d9da36af89cf65f6f5443\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-tasks-16.0.1.aar\f4912c05614d9da36af89cf65f6f5443\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.0.1.aar\92bcab2b6ce7f75d77315b42e757f51e\AndroidManifest.xml:22:5-26:19
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.0.1.aar\92bcab2b6ce7f75d77315b42e757f51e\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-16.0.0.aar\fc49d8d79942b176c90917eadbc72e1f\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-16.0.0.aar\fc49d8d79942b176c90917eadbc72e1f\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:16.2.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.2.0.aar\cb92f6213c9027d73d45c900e3b4d285\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.2.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.2.0.aar\cb92f6213c9027d73d45c900e3b4d285\AndroidManifest.xml:22:5-26:19
 MERGED from [com.github.bumptech.glide:glide:4.9.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-glide-4.9.0.aar\c1b1dc2a01c852fe2131bb0d98cf4de8\AndroidManifest.xml:10:5-20
 MERGED from [com.github.bumptech.glide:glide:4.9.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-glide-4.9.0.aar\c1b1dc2a01c852fe2131bb0d98cf4de8\AndroidManifest.xml:10:5-20
 MERGED from [androidx.core:core:1.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\core-1.0.0.aar\310b6023b3f5748571899a4e0d03fc62\AndroidManifest.xml:22:5-89
@@ -206,46 +217,54 @@ MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] C:\Users\VeronicaMi\.gr
 MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-gifdecoder-4.9.0.aar\de580d73c062f544e562ef32d9ce7b3f\AndroidManifest.xml:9:5-20
 MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\soloader-0.6.0.aar\9df399ab0cf01c436260c5fdc3585522\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\soloader-0.6.0.aar\9df399ab0cf01c436260c5fdc3585522\AndroidManifest.xml:11:5-20
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-android-maps-utils-0.5.aar\f3ccd9e1b17742d0d00217fe7defb519\AndroidManifest.xml:7:5-11:19
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-android-maps-utils-0.5.aar\f3ccd9e1b17742d0d00217fe7defb519\AndroidManifest.xml:7:5-11:19
 MERGED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:18:5-28:19
 MERGED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:18:5-28:19
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\core-1.0.0.aar\310b6023b3f5748571899a4e0d03fc62\AndroidManifest.xml:22:18-86
 	android:label
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:30:7-39
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:31:7-39
 	android:roundIcon
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:32:7-52
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:33:7-52
 	android:icon
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:31:7-41
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:32:7-41
 	android:allowBackup
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:33:7-34
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:34:7-34
 	android:theme
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:34:7-38
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:35:7-38
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:29:7-38
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:30:7-38
+meta-data#com.google.android.geo.API_KEY
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:36:9-38:70
+	android:value
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:38:13-68
+	android:name
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:37:13-58
 activity#com.apkmovil.MainActivity
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:35:7-44:18
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:39:7-48:18
 	android:label
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:37:9-41
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:41:9-41
 	android:windowSoftInputMode
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:39:9-51
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:43:9-51
 	android:configChanges
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:38:9-79
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:42:9-79
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:36:9-37
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:40:9-37
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:40:9-43:25
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:44:9-47:25
 action#android.intent.action.MAIN
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:41:13-65
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:45:13-65
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:41:21-62
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:45:21-62
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:42:13-73
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:46:13-73
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:42:23-70
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:46:23-70
 activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:45:7-84
+ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:49:7-84
 	android:name
-		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:45:17-81
+		ADDED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml:49:17-81
 uses-sdk
 INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\VeronicaMi\AppMovil\ApkMovil\android\app\src\main\AndroidManifest.xml
@@ -256,6 +275,8 @@ MERGED from [:react-native-reanimated] C:\Users\VeronicaMi\AppMovil\ApkMovil\nod
 MERGED from [:react-native-reanimated] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-reanimated\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-maps] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-maps] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.react:react-native:0.59.10] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-react-native-0.59.10.aar\54e2032770be06d71b436610372b60c2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.59.10] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-react-native-0.59.10.aar\54e2032770be06d71b436610372b60c2\AndroidManifest.xml:7:5-9:41
 MERGED from [:expo-permissions] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-permissions\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
@@ -306,16 +327,18 @@ MERGED from [:unimodules-sensors-interface] C:\Users\VeronicaMi\AppMovil\ApkMovi
 MERGED from [:unimodules-sensors-interface] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\unimodules-sensors-interface\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.transition:transition:1.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\transition-1.0.0.aar\d204d1b577852b1aa2e9ce246d34dd32\AndroidManifest.xml:20:5-44
 MERGED from [androidx.transition:transition:1.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\transition-1.0.0.aar\d204d1b577852b1aa2e9ce246d34dd32\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-location:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-location-16.0.0.aar\cac44bc4cbd2201c49a775397f0adf3d\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-location-16.0.0.aar\cac44bc4cbd2201c49a775397f0adf3d\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.0.1.aar\2574575f077a25ecf855e1aa54e5e4c6\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.0.1.aar\2574575f077a25ecf855e1aa54e5e4c6\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-16.0.0.aar\fc49d8d79942b176c90917eadbc72e1f\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-16.0.0.aar\fc49d8d79942b176c90917eadbc72e1f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.1.0.aar\f79aabcf4d957a4a81a21859e358d633\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.1.0.aar\f79aabcf4d957a4a81a21859e358d633\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-tasks-16.0.1.aar\f4912c05614d9da36af89cf65f6f5443\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-tasks-16.0.1.aar\f4912c05614d9da36af89cf65f6f5443\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.0.1.aar\92bcab2b6ce7f75d77315b42e757f51e\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.0.1.aar\92bcab2b6ce7f75d77315b42e757f51e\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-16.0.0.aar\fc49d8d79942b176c90917eadbc72e1f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-16.0.0.aar\fc49d8d79942b176c90917eadbc72e1f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.2.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.2.0.aar\cb92f6213c9027d73d45c900e3b4d285\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.2.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.2.0.aar\cb92f6213c9027d73d45c900e3b4d285\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\legacy-support-v4-1.0.0.aar\ea6cdcb8fb1cd4bbe826998e9d42008c\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\legacy-support-v4-1.0.0.aar\ea6cdcb8fb1cd4bbe826998e9d42008c\AndroidManifest.xml:20:5-44
 MERGED from [com.github.bumptech.glide:glide:4.9.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-glide-4.9.0.aar\c1b1dc2a01c852fe2131bb0d98cf4de8\AndroidManifest.xml:6:5-8:41
@@ -388,6 +411,8 @@ MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] C:\Users\VeronicaMi\
 MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-imagepipeline-base-1.10.0.aar\fa301ca60b6c9a009fd8e92db2e43760\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\soloader-0.6.0.aar\9df399ab0cf01c436260c5fdc3585522\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.soloader:soloader:0.6.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\soloader-0.6.0.aar\9df399ab0cf01c436260c5fdc3585522\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-android-maps-utils-0.5.aar\f3ccd9e1b17742d0d00217fe7defb519\AndroidManifest.xml:5:5-43
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-android-maps-utils-0.5.aar\f3ccd9e1b17742d0d00217fe7defb519\AndroidManifest.xml:5:5-43
 MERGED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:8:5-10:41
 MERGED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:8:5-10:41
 MERGED from [com.facebook.fresco:fbcore:1.10.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-fbcore-1.10.0.aar\b07326bea03d2fef3d4dd49942f41dcd\AndroidManifest.xml:5:5-7:41
@@ -434,24 +459,40 @@ ADDED from [:expo-location] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\e
 		ADDED from [:expo-location] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-37
 	android:name
 		ADDED from [:expo-location] C:\Users\VeronicaMi\AppMovil\ApkMovil\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-78
-activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.0.1.aar\2574575f077a25ecf855e1aa54e5e4c6\AndroidManifest.xml:23:9-26:75
-	android:exported
-		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.0.1.aar\2574575f077a25ecf855e1aa54e5e4c6\AndroidManifest.xml:25:13-37
-	android:theme
-		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.0.1.aar\2574575f077a25ecf855e1aa54e5e4c6\AndroidManifest.xml:26:13-72
-	android:name
-		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.0.1.aar\2574575f077a25ecf855e1aa54e5e4c6\AndroidManifest.xml:24:13-79
-meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.0.1.aar\92bcab2b6ce7f75d77315b42e757f51e\AndroidManifest.xml:23:9-25:69
-	android:value
-		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.0.1.aar\92bcab2b6ce7f75d77315b42e757f51e\AndroidManifest.xml:25:13-66
-	android:name
-		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.0.1.aar\92bcab2b6ce7f75d77315b42e757f51e\AndroidManifest.xml:24:13-58
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:13:5-79
+ADDED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:23:5-79
+MERGED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:13:5-79
+MERGED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:13:5-79
 	android:name
-		ADDED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:13:22-76
+		ADDED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:23:22-76
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:28:9-32
+uses-library#org.apache.http.legacy
+ADDED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:33:9-35:40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-maps-16.1.0.aar\51aaebabca53b809abfa7f9cc5c5e791\AndroidManifest.xml:34:13-50
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.1.0.aar\f79aabcf4d957a4a81a21859e358d633\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.1.0.aar\f79aabcf4d957a4a81a21859e358d633\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.1.0.aar\f79aabcf4d957a4a81a21859e358d633\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:16.1.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-base-16.1.0.aar\f79aabcf4d957a4a81a21859e358d633\AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:16.2.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.2.0.aar\cb92f6213c9027d73d45c900e3b4d285\AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-android-maps-utils-0.5.aar\f3ccd9e1b17742d0d00217fe7defb519\AndroidManifest.xml:8:9-10:69
+MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-android-maps-utils-0.5.aar\f3ccd9e1b17742d0d00217fe7defb519\AndroidManifest.xml:8:9-10:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:16.2.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.2.0.aar\cb92f6213c9027d73d45c900e3b4d285\AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:16.2.0] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-play-services-basement-16.2.0.aar\cb92f6213c9027d73d45c900e3b4d285\AndroidManifest.xml:24:13-58
 uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
 ADDED from [io.nlopez.smartlocation:library:3.2.11] C:\Users\VeronicaMi\.gradle\caches\transforms-1\files-1.1\jetified-library-3.2.11.aar\7b2df06769027b8653f29c9dd5bf33df\AndroidManifest.xml:15:5-98
 	android:name

@@ -24,6 +24,8 @@ import expo.modules.filesystem.FileSystemPackage;
 import java.util.Arrays;
 import java.util.List;
 
+import com.airbnb.android.react.maps.MapsPackage;
+
 public class MainApplication extends Application implements ReactApplication {
   private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
     new BasePackageList().getPackageList(),
@@ -43,7 +45,8 @@ public class MainApplication extends Application implements ReactApplication {
           new ReanimatedPackage(),
           new RNGestureHandlerPackage(),
           new RNScreensPackage(),
-          new ModuleRegistryAdapter(mModuleRegistryProvider)
+          new ModuleRegistryAdapter(mModuleRegistryProvider),
+              new MapsPackage()
       );
     }
 

@@ -145,6 +145,11 @@ const styles = StyleSheet.create({
 
     },
 
+    labelBold:{
+        fontWeight: 'bold',
+        color: 'black',
+    },
+    
     texto:{
         flex: 1,
         fontSize: 12,
