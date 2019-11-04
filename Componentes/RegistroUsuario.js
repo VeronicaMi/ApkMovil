@@ -11,13 +11,21 @@ import DatePicker from 'react-native-datepicker';
 //install npm i react-native-simple-radio-button --save
 import RadioForm, { RadioButton } from 'react-native-simple-radio-button';
 import Encabezado from './Encabezado.js';
+import  Conexion,{connect}  from './Conexion.js';
+import Meteor, {
+    withTracker,
+    ReactiveDict,
+    Accounts,
+    MeteorListView,
+  } from "react-native-meteor";
+connect();
 
 var Sexo = [
     {label: 'Femenino', value: 0 },
     {label: 'Masculino', value: 1 }
   ];
 
-export default class RegistroUsuario extends Component{
+class RegistroUsuario extends Component{
     static navigationOptions = {
         header: null,
     }
@@ -39,6 +47,8 @@ export default class RegistroUsuario extends Component{
                 noInterior: '',
                 colonia: '',
                 codigoPostal: '',
+                role: 'mobile-app-user',
+                password: '1234'
             },
            
             confirCorreo: '',
@@ -59,7 +69,34 @@ export default class RegistroUsuario extends Component{
     }
 
 
-    abreNav = () => {this.props.navigation.navigate('DrawerNav')}
+    guardarUsuarioNuevo = () => {
+        Meteor.call('users.insert',  this.state.usuario , async (err, res) => {
+            // Do whatever you want with the response
+            if(err) {
+                Alert.alert(
+                            'Error',
+                            err.message,
+                            [
+                            {text: 'OK', onPress: () => console.log('OK Pressed')},
+                            ],
+                            {cancelable: false},
+                            );
+            } else if(res){
+                Alert.alert(
+                            'Exito',
+                            'Se agrego correctamente',
+                            [
+                            {text: 'OK', onPress: () => this.props.navigation.navigate('DrawerNav')},
+                            ],
+                            {cancelable: false},
+                    );
+                await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
+            }
+            console.log('users.insert', err, res);
+        });
+
+        // 
+    }
 
     render(){
         return(
@@ -85,7 +122,7 @@ export default class RegistroUsuario extends Component{
                     <Picker 
                         style = {styles.compania}
                         selectedValue = {this.state.usuario.compania} 
-                        onValueChange = {()=> this.updateCompania(this.state.usuario.compania)}>
+                        onValueChange = {(itemValue, itemIndex)=> this.updateCompania(itemValue)}>
                         <Picker.Item label = 'Telcel' value = 'telcel'/>
                         <Picker.Item label = 'Movistar' value = 'movistar'/>
                         <Picker.Item label = 'ATYT' value = 'aTYT'/>
@@ -272,7 +309,7 @@ export default class RegistroUsuario extends Component{
 
                     <View style = {styles.button}>
                         <TouchableOpacity style = {styles.buttonStyle} 
-                            onPress={() => { this.abreNav();}}>
+                            onPress={() => { this.guardarUsuarioNuevo();}}>
                             <Text style = {styles.buttonText}>ENVIAR</Text>
                         </TouchableOpacity>
                     </View>
@@ -392,3 +429,13 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline'
     }
 });
+
+
+export default withTracker(params => {
+    // Meteor.subscribe('users');
+   
+    return {
+      //users: Meteor.collection('users').find(),
+      //incompleteCount: Tasks.find({ checked: { $ne: true } }).count(),
+    };
+  })(RegistroUsuario);
