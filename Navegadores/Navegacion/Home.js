@@ -14,14 +14,12 @@ import * as Permissions from 'expo-permissions';
 //expo install expo-constants
 //import {Constants, MapView, Location, Permissions} from 'expo';
 import call from 'react-native-phone-call';
-import  Conexion,{connect}  from '../../Componentes/Conexion.js';
 import Meteor, {
     withTracker,
     ReactiveDict,
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
-connect();
 
 
 class Home extends Component{
@@ -29,7 +27,7 @@ class Home extends Component{
         locationResult: '',
         hasLocationPermissions: false,
         marker: {coords: { latitude: 37.78825, longitude: -122.4324}},
-        opcionPanico: opcion
+        opcionPanico: '10312'
     }
 
     async componentDidMount() {
@@ -56,6 +54,7 @@ class Home extends Component{
                       },
                     fechaHora: new Date()
                    };
+      console.log('se manda reporte boton: ', data);
       Meteor.call('panicButton.insert',  data , async (err, res) => {
             // Do whatever you want with the response
             if(err) {
@@ -138,7 +137,7 @@ class Home extends Component{
                       </TouchableOpacity>
 
                       <TouchableOpacity 
-                      onPress = {() => this.botonPanico}>
+                      onPress = {this.botonPanico.bind(this)}>
                         <Image
                             style = {styles.imageButton}
                             source = {{uri: 'https://i.postimg.cc/wT1gpq54/Boton-Panico2.png'}}
