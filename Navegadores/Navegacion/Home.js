@@ -53,7 +53,7 @@ class Home extends Component{
                      ubicacion: {
                          lat: latitude,
                          lng: longitude
-                      }
+                      },
                     fechaHora: new Date()
                    };
       Meteor.call('panicButton.insert',  data , async (err, res) => {
@@ -82,7 +82,6 @@ class Home extends Component{
 
         // 
     }
-    }
     _getLocationAsync = async () => {
         let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if (status !== 'granted') {
@@ -105,14 +104,14 @@ class Home extends Component{
       });
   };
 
-  onCall(){
-    const args = {
-        number: '911', // String value with the number to call
-        prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
+    onCall(){
+        const args = {
+            number: '53712250', // String value with the number to call
+            prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call
       };
+        call(args).catch(console.error);
+    };
 
-    call(args).catch(console.error);
-};
     render(){
         return(
           <ScrollView>
