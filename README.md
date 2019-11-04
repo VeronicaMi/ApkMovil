@@ -1,16 +1,21 @@
 # ApkMovilNau
-APK Naucalpan
 
-Checar la conexión del dispositivo 
-  adb devices
- 
-Correr el apk con
-  react-native run-android
-  
- Si llegara a ocurrir algun problema hacer lo siguiente
-    1. Compilar el proyecto en Android Studio
-    2. Correr el proyecto en Android studio para instalarlo en el dispositivo 
-    3. En la consola correr el comando 
-          *** adb -s reverse <dispositivo> tcp:8081 tcp:8081
-    4. Ejecutar el comando 
-         react-native run-android
+Para levantar el proyecto:
+
+1. Después de clonar el repositorio instalar las dependencias:
+
+``$ npm install``
+
+2. Conectar el dispositivo correr el comando:
+
+```$ react-native run-android```
+
+3. Cada vez que se corra el comando saldrán errores relativos a **react-nativemaps**:
+
+    * ``> Task :react-native-maps:processDebugManifest FAILED``
+    * ``> Task :react-native-maps:generateDebugBuildConfig FAILED``
+    * ``> Task :react-native-maps:packageDebugResources FAILED``
+    * ``> Task :react-native-maps:mergeDebugShaders FAILED``
+    * ``> Task :react-native-maps:packageDebugAssets FAILED``
+    *  ``> Task :react-native-maps:mergeDebugJniLibFolders FAILED``
+ 4. La siguiente vez el comando `react-native run-android` debe instalar correctamente la aplicación en el móvil.
