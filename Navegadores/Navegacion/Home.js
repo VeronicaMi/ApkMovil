@@ -14,18 +14,75 @@ import * as Permissions from 'expo-permissions';
 //expo install expo-constants
 //import {Constants, MapView, Location, Permissions} from 'expo';
 import call from 'react-native-phone-call';
+import  Conexion,{connect}  from '../../Componentes/Conexion.js';
+import Meteor, {
+    withTracker,
+    ReactiveDict,
+    Accounts,
+    MeteorListView,
+  } from "react-native-meteor";
+connect();
 
-export default class Home extends Component{
+
+class Home extends Component{
     state = {
         locationResult: '',
         hasLocationPermissions: false,
         marker: {coords: { latitude: 37.78825, longitude: -122.4324}},
+        opcionPanico: opcion
     }
 
-    componentDidMount() {
-        this._getLocationAsync();
-      }
+    async componentDidMount() {
+      await this._getLocationAsync();
+      const opcion = await AsyncStorage.getItem('opcionPanico');
+      console.log(opcion);
+      this.setState({
+        ...this.state,
+        opcionPanico: opcion
+      });
+    }
+    botonPanico = async () => {
+      const opcion = this.state.opcionPanico;
+      const latitude = this.state.marker.coords.latitude;
+      const longitude = this.state.marker.coords.longitude;
+      const itemUsuario = await AsyncStorage.getItem('myuser');
+      const myuser = JSON.parse(itemUsuario);
+      const data = {
+                     idIncidente: opcion,
+                     userId: myuser._id,
+                     ubicacion: {
+                         lat: latitude,
+                         lng: longitude
+                      }
+                    fechaHora: new Date()
+                   };
+      Meteor.call('panicButton.insert',  data , async (err, res) => {
+            // Do whatever you want with the response
+            if(err) {
+                Alert.alert(
+                            'Error',
+                            err.message,
+                            [
+                            {text: 'OK', onPress: () => console.log('OK Pressed')},
+                            ],
+                            {cancelable: false},
+                            );
+            } else if(res){
+                Alert.alert(
+                            'Exito',
+                            'Se agrego correctamente',
+                            [
+                            {text: 'OK', onPress: () => this.props.navigation.navigate('DrawerNav')},
+                            ],
+                            {cancelable: false},
+                    );
+            }
+            console.log('users.insert', err, res);
+        });
 
+        // 
+    }
+    }
     _getLocationAsync = async () => {
         let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if (status !== 'granted') {
@@ -40,12 +97,12 @@ export default class Home extends Component{
         this.setState({ locationResult: JSON.stringify(location) });
    
    // Center the map on the location we just fetched.
-    this.setState({
-        mapRegion: { latitude: location.coords.latitude, 
-                    longitude: location.coords.longitude, 
-                    latitudeDelta: 0.0022, longitudeDelta: 0.0041 },
-        marker: location
-    });
+      this.setState({
+          mapRegion: { latitude: location.coords.latitude, 
+                      longitude: location.coords.longitude, 
+                      latitudeDelta: 0.0022, longitudeDelta: 0.0041 },
+          marker: location
+      });
   };
 
   onCall(){
@@ -82,7 +139,7 @@ export default class Home extends Component{
                       </TouchableOpacity>
 
                       <TouchableOpacity 
-                      onPress = {() => alert('presionaste una vez')}>
+                      onPress = {() => this.botonPanico}>
                         <Image
                             style = {styles.imageButton}
                             source = {{uri: 'https://i.postimg.cc/wT1gpq54/Boton-Panico2.png'}}
@@ -142,4 +199,11 @@ contIcon:{
 
 });
 
-/**/
+export default withTracker(params => {
+    // Meteor.subscribe('users');
+   
+    return {
+      //users: Meteor.collection('users').find(),
+      //incompleteCount: Tasks.find({ checked: { $ne: true } }).count(),
+    };
+  })(Home);

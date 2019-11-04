@@ -17,6 +17,13 @@ export default class Slider extends Component{
         };
       }
     
+    async componentDidMount(){
+      const user = await AsyncStorage.getItem('myuser');
+      if(user) {
+        this.props.navigation.navigate('Home');
+      }
+    }
+
     static navigationOptions = {
         header: null,
     }

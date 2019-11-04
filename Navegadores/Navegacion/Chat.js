@@ -18,7 +18,7 @@ import Meteor, {
 import { Ionicons } from '@expo/vector-icons';
 
 /** Connect to server.*/
-Meteor.connect("ws://192.168.2.5:3000/websocket");
+Meteor.connect("ws://10.0.0.9:3000/websocket");
 
 class Chat extends Component{
 
