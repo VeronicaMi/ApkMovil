@@ -87,11 +87,13 @@ class RegistroUsuario extends Component{
                             'Exito',
                             'Se agrego correctamente',
                             [
-                            {text: 'OK', onPress: () => this.props.navigation.navigate('DrawerNav')},
+                            {text: 'OK', onPress: () => this.props.navigation.navigate({
+                                    routeName: 'Validacion',
+                                    params: this.state.usuario
+                                })},
                             ],
                             {cancelable: false},
                     );
-                await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
             }
             console.log('users.insert', err, res);
         });

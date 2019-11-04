@@ -45,6 +45,7 @@ class Home extends Component{
       const longitude = this.state.marker.coords.longitude;
       const itemUsuario = await AsyncStorage.getItem('myuser');
       const myuser = JSON.parse(itemUsuario);
+      console.log('datos de usuario: ', myuser);
       const data = {
                      idIncidente: opcion,
                      userId: myuser._id,
