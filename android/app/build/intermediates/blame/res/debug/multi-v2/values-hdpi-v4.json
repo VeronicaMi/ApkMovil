@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
+            "outputFile": "C:\\Users\\epvel\\Documents\\git\\ApkMovil\\ApkMovil\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\VeronicaMi\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.0.0.aar\\8cb48e8411942492e2ad71d39b2fc981\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "source": "C:\\Users\\epvel\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.0.0.aar\\5c107c19f9908175cb77e4b695a9d211\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
