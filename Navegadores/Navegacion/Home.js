@@ -106,7 +106,7 @@ class Home extends Component{
 
   onCall(){
     const args = {
-        number: '911', // String value with the number to call
+        number: '5553712250', // String value with the number to call
         prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call
       };
 

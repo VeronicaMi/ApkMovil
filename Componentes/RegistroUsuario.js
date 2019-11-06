@@ -75,7 +75,7 @@ class RegistroUsuario extends Component{
                             'Error',
                             err.message,
                             [
-                            {text: 'OK', onPress: () => console.log('OK Pressed')},
+                                {text: 'OK', onPress: () => console.log('OK Pressed')},
                             ],
                             {cancelable: false},
                             );
@@ -84,11 +84,11 @@ class RegistroUsuario extends Component{
                             'Exito',
                             'Se agrego correctamente',
                             [
-                            {text: 'OK', onPress: () => this.props.navigation.navigate('DrawerNav')},
+                                {text: 'OK', onPress: () => this.props.navigation.navigate('DrawerNav')},
                             ],
                             {cancelable: false},
                     );
-                this.state.usuario.userId = res.userId;
+                this.setState({ usuario: {...this.state.usuario, userId: res.userId}});
                 await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
             }
             console.log('users.insert', err, res);

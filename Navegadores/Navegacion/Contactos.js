@@ -44,7 +44,7 @@ class Contactos extends Component {
                             'Error',
                             err.message,
                             [
-                            {text: 'OK', onPress: () => console.log('OK Pressed')},
+                                {text: 'OK', onPress: () => console.log('OK Pressed')},
                             ],
                             {cancelable: false},
                             );
