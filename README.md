@@ -6,16 +6,9 @@ Para levantar el proyecto:
 
 ``$ npm install``
 
-2. Conectar el dispositivo correr el comando:
-
-```$ react-native run-android```
-
-3. Cada vez que se corra el comando saldrán errores relativos a **react-nativemaps**:
-
-    * ``> Task :react-native-maps:processDebugManifest FAILED``
-    * ``> Task :react-native-maps:generateDebugBuildConfig FAILED``
-    * ``> Task :react-native-maps:packageDebugResources FAILED``
-    * ``> Task :react-native-maps:mergeDebugShaders FAILED``
-    * ``> Task :react-native-maps:packageDebugAssets FAILED``
-    *  ``> Task :react-native-maps:mergeDebugJniLibFolders FAILED``
- 4. La siguiente vez el comando `react-native run-android` debe instalar correctamente la aplicación en el móvil.
+2. Correr los comandos (si es la primera vez que se instala en el dispositivo):
+    * ``cd android && gradlew clean``
+    * ``cd .. && react-native run-android``
+    
+3. Si ya está instalado:
+    * ``react-native run-android``

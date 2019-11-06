@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { Alert, AsyncStorage, StyleSheet, View, Text, ScrollView,
         TextInput, TouchableOpacity, Image } from 'react-native';
-import  Conexion,{connect}  from '../../Componentes/Conexion.js';
 import Meteor, {
     withTracker,
     ReactiveDict,
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
-connect();
 
 class Contactos extends Component {
     constructor(props){

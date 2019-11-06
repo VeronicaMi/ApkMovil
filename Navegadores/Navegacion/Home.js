@@ -14,14 +14,12 @@ import * as Permissions from 'expo-permissions';
 //expo install expo-constants
 //import {Constants, MapView, Location, Permissions} from 'expo';
 import call from 'react-native-phone-call';
-import  Conexion,{connect}  from '../../Componentes/Conexion.js';
 import Meteor, {
     withTracker,
     ReactiveDict,
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
-connect();
 
 
 class Home extends Component{

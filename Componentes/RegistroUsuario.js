@@ -11,14 +11,12 @@ import DatePicker from 'react-native-datepicker';
 //install npm i react-native-simple-radio-button --save
 import RadioForm, { RadioButton } from 'react-native-simple-radio-button';
 import Encabezado from './Encabezado.js';
-import  Conexion,{connect}  from './Conexion.js';
 import Meteor, {
     withTracker,
     ReactiveDict,
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
-connect();
 
 var Sexo = [
     {label: 'Femenino', value: 0 },
