@@ -14,12 +14,14 @@ import * as Permissions from 'expo-permissions';
 //expo install expo-constants
 //import {Constants, MapView, Location, Permissions} from 'expo';
 import call from 'react-native-phone-call';
+import  Conexion,{connect}  from '../../Componentes/Conexion.js';
 import Meteor, {
     withTracker,
     ReactiveDict,
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
+connect();
 
 
 class Home extends Component{
@@ -27,7 +29,7 @@ class Home extends Component{
         locationResult: '',
         hasLocationPermissions: false,
         marker: {coords: { latitude: 37.78825, longitude: -122.4324}},
-        opcionPanico: '10312'
+        opcionPanico: ''
     }
 
     async componentDidMount() {
@@ -45,17 +47,16 @@ class Home extends Component{
       const longitude = this.state.marker.coords.longitude;
       const itemUsuario = await AsyncStorage.getItem('myuser');
       const myuser = JSON.parse(itemUsuario);
-      console.log('datos de usuario: ', myuser);
       const data = {
                      idIncidente: opcion,
-                     userId: myuser._id,
+                     userId: myuser.userId,
                      ubicacion: {
                          lat: latitude,
-                         lng: longitude
+                         lng: longitude,
                       },
                     fechaHora: new Date()
                    };
-      console.log('se manda reporte boton: ', data);
+      console.log(data);
       Meteor.call('panicButton.insert',  data , async (err, res) => {
             // Do whatever you want with the response
             if(err) {
@@ -82,6 +83,7 @@ class Home extends Component{
 
         // 
     }
+
     _getLocationAsync = async () => {
         let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if (status !== 'granted') {
@@ -104,14 +106,14 @@ class Home extends Component{
       });
   };
 
-    onCall(){
-        const args = {
-            number: '53712250', // String value with the number to call
-            prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call
+  onCall(){
+    const args = {
+        number: '911', // String value with the number to call
+        prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call
       };
-        call(args).catch(console.error);
-    };
 
+    call(args).catch(console.error);
+};
     render(){
         return(
           <ScrollView>
@@ -138,7 +140,7 @@ class Home extends Component{
                       </TouchableOpacity>
 
                       <TouchableOpacity 
-                      onPress = {this.botonPanico.bind(this)}>
+                      onPress = {() => this.botonPanico()}>
                         <Image
                             style = {styles.imageButton}
                             source = {{uri: 'https://i.postimg.cc/wT1gpq54/Boton-Panico2.png'}}
