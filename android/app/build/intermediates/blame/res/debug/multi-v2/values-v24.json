@@ -1,10 +1,14 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
             "outputFile": "C:\\Users\\VeronicaMi\\Documents\\git\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
+=======
+            "outputFile": "C:\\Users\\epvel\\Documents\\git\\ApkMovil\\ApkMovil\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
+>>>>>>> 4f2a5e4ff5ff7094dc55933ff12749088265c529
             "map": [
                 {
-                    "source": "C:\\Users\\VeronicaMi\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.0.0.aar\\8cb48e8411942492e2ad71d39b2fc981\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\epvel\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.0.0.aar\\5c107c19f9908175cb77e4b695a9d211\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +18,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\VeronicaMi\\.gradle\\caches\\transforms-1\\files-1.1\\media-1.0.0.aar\\74833f8a3b6b6fd408bda44d98247130\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\epvel\\.gradle\\caches\\transforms-1\\files-1.1\\media-1.0.0.aar\\d300d885f889d28ad9820eaa9cb3a1ad\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
