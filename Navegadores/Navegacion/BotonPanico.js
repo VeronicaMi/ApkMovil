@@ -12,25 +12,25 @@ export default class BotonPanico extends Component{
              ProtecCivilEmer: '',
              tipoEmergencia: '' }
     items = {
-    'accidenteCoche':'Accidente de coche con heridos',
-    'electrocutado':'Electrocutado',
-    'infarto':'Infarto',
-    'sobredosis':'Sobredosis',
-    'parto':'Trabajo de parto',
-    'ahogado':'Ahogado',
-    'robo':'Robo',
-    'secuestro':'Secuestro',
-    'disparo':'Disparo de arma',
-    'violenciaFamiliar':'Violencia Familiar',
-    'abusoSexual':'Abuso sexual',
-    'homicidio':'Homicidio',
-    'allanamientoMorada':'Allanamiento de morada',
-    'incendio':'Incendio',
-    'explosion':'Explosión',
-    'derrumbe':'Derrumbe',
-    'inundacion':'Inundación',
-    'erupcionVolcanica':'Erupción Volcánica',
-    'enjambreAbejas':'Enjambre de abejas',};
+    '10104':'Accidente de coche con heridos',
+    '10309':'Electrocutado',
+    '10304':'Infarto',
+    '10324':'Sobredosis',
+    '10325':'Trabajo de parto',
+    '10301':'Ahogado',
+    '30409':'Robo',
+    '30605':'Secuestro',
+    '30202':'Disparo de arma',
+    '30503':'Violencia Familiar',
+    '30701':'Abuso sexual',
+    '30906':'Homicidio',
+    '31001':'Allanamiento de morada',
+    '20110':'Incendio',
+    '20107':'Explosión',
+    '20202':'Derrumbe',
+    '20207':'Inundación',
+    '20204':'Erupción Volcánica',
+    '20203':'Enjambre de abejas',};
 
     updateMedicalEmer = (MedicalEmer) => {
         this.setState({MedicalEmer: MedicalEmer,
@@ -55,6 +55,9 @@ export default class BotonPanico extends Component{
 
     guardarOpcionPanico = async (opcion) => {
         await AsyncStorage.setItem('opcionPanico', opcion);
+            
+        const opcionStored = await AsyncStorage.getItem('opcionPanico');
+        console.log('opcion'+opcionStored);
     }
 
     componentDidMount = async () => {
@@ -79,12 +82,13 @@ export default class BotonPanico extends Component{
                         selectedValue = {this.state.MedicalEmer} 
                         onValueChange = {(itemValue, itemIndex)=>this.updateMedicalEmer(itemValue)}>
                         <Picker.Item label = '' value = ''/>
-                        <Picker.Item label = 'Accidente de coche con heridos' value = 'accidenteCoche'/>
-                        <Picker.Item label = 'Electrocutado' value = 'electrocutado'/>
-                        <Picker.Item label = 'Infarto' value = 'infarto'/>
-                        <Picker.Item label = 'Sobredosis' value = 'sobredosis'/>
-                        <Picker.Item label = 'Trabajo de parto' value = 'parto'/>
-                        <Picker.Item label = 'Ahogado' value = 'ahogado'/>
+                        <Picker.Item label = '' value = ''/>
+                        <Picker.Item label = 'Accidente de coche con heridos' value = '10104'/>
+                        <Picker.Item label = 'Electrocutado' value = '10309'/>
+                        <Picker.Item label = 'Infarto' value = '10304'/>
+                        <Picker.Item label = 'Sobredosis' value = '10324'/>
+                        <Picker.Item label = 'Trabajo de parto' value = '10325'/>
+                        <Picker.Item label = 'Ahogado' value = '10301'/>
                     </Picker>
 
                     <Text style = {styles.label}> Emergencia Polícial </Text>
@@ -94,13 +98,13 @@ export default class BotonPanico extends Component{
                         selectedValue = {this.state.PolicialEmer} 
                         onValueChange = {(itemValue, itemIndex)=>this.updatePolicialEmer(itemValue)}>
                         <Picker.Item label = '' value = ''/>
-                        <Picker.Item label = 'Robo' value = 'robo'/>
-                        <Picker.Item label = 'Secuestro' value = 'secuestro'/>
-                        <Picker.Item label = 'Disparo de arma' value = 'disparo'/>
-                        <Picker.Item label = 'Violencia Familiar' value = 'violenciaFamiliar'/>
-                        <Picker.Item label = 'Abuso sexual' value = 'abusoSexual'/>
-                        <Picker.Item label = 'Homicidio' value = 'homicidio'/>
-                        <Picker.Item label = 'Allanamiento de morada' value = 'allanamientoMorada'/>
+                        <Picker.Item label = 'Robo' value = '30409'/>
+                        <Picker.Item label = 'Secuestro' value = '30605'/>
+                        <Picker.Item label = 'Disparo de arma' value = '30202'/>
+                        <Picker.Item label = 'Violencia Familiar' value = '30503'/>
+                        <Picker.Item label = 'Abuso sexual' value = '30701'/>
+                        <Picker.Item label = 'Homicidio' value = '30906'/>
+                        <Picker.Item label = 'Allanamiento de morada' value = '31001'/>
                     </Picker>
 
                     <Text style = {styles.label}> Emergencia Protección Cívil </Text>
@@ -110,12 +114,12 @@ export default class BotonPanico extends Component{
                         selectedValue = {this.state.ProtecCivilEmer} 
                         onValueChange = {(itemValue, itemIndex)=>this.updateProtecCivilEmer(itemValue)}>
                         <Picker.Item label = '' value = ''/>
-                        <Picker.Item label = 'Incendio' value = 'incendio'/>
-                        <Picker.Item label = 'Explosión' value = 'explosion'/>
-                        <Picker.Item label = 'Derrumbe' value = 'derrumbe'/>
-                        <Picker.Item label = 'Inundación' value = 'inundacion'/>
-                        <Picker.Item label = 'Erupción Volcánica' value = 'erupcionVolcanica'/>
-                        <Picker.Item label = 'Enjambre de abejas' value = 'enjambreAbejas'/>
+                        <Picker.Item label = 'Incendio' value = '20110'/>
+                        <Picker.Item label = 'Explosión' value = '20107'/>
+                        <Picker.Item label = 'Derrumbe' value = '20202'/>
+                        <Picker.Item label = 'Inundación' value = '20207'/>
+                        <Picker.Item label = 'Erupción Volcánica' value = '20204'/>
+                        <Picker.Item label = 'Enjambre de abejas' value = '20203'/>
                     </Picker>
 
                     <View style = {styles.button}>

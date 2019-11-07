@@ -48,7 +48,8 @@ class RegistroUsuario extends Component{
                 colonia: '',
                 codigoPostal: '',
                 role: 'mobile-app-user',
-                password: '1234'
+                password: '1234',
+                //verificationCode: '0',
             },
            
             confirCorreo: '',
@@ -70,8 +71,22 @@ class RegistroUsuario extends Component{
 
 
     guardarUsuarioNuevo = () => {
+        // Do whatever you want with the response
+        if(this.state.usuario.correoElectronico === this.state.confirCorreo){
+            if(this.state.check){
+                this.guardarUsuarioNuevoMetior();
+            }else{
+                Alert.alert("Debes aceptar Terminos y Condiciones");
+            }
+        }else{
+            Alert.alert("Tu correo no coincide");
+        }
+
+        // 
+    }
+
+    guardarUsuarioNuevoMetior(){
         Meteor.call('users.insert',  this.state.usuario , async (err, res) => {
-            // Do whatever you want with the response
             if(err) {
                 Alert.alert(
                             'Error',
@@ -90,12 +105,11 @@ class RegistroUsuario extends Component{
                             ],
                             {cancelable: false},
                     );
+                    this.state.usuario.userId = res.userId;
                 await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
             }
             console.log('users.insert', err, res);
         });
-
-        // 
     }
 
     render(){
@@ -195,14 +209,7 @@ class RegistroUsuario extends Component{
                             maxDate="31-12-2021"
                             confirmBtnText="Confirm"
                             cancelBtnText="Cancel"
-                            customStyles={{
-                                //dateIcon: {
-                                //position: 'absolute',
-                                //left: 5,
-                                //top: 4,
-                                //marginLeft: 5
-                                //},
-                            }}
+                            
                             onDateChange={(date) => {
                                 const usuario = this.state.usuario;
                                 usuario.fechaNacimento = date;
@@ -289,7 +296,8 @@ class RegistroUsuario extends Component{
                     <CheckBox
                             style = {styles.checkBox}
                             Size = {40}
-                            value = {this.state.check}
+                            //value = {this.state.check}
+                            checked = {this.state.check}
                             onChange = {() => this.checkBoxTest()}       
                    />
 
@@ -432,7 +440,7 @@ const styles = StyleSheet.create({
 
 
 export default withTracker(params => {
-    // Meteor.subscribe('users');
+     //Meteor.subscribe('users');
    
     return {
       //users: Meteor.collection('users').find(),

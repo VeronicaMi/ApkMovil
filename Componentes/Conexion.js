@@ -11,6 +11,6 @@ export default class Conexion {
 
 export function connect () {
     /** Connect to server.*/
-  Meteor.connect("ws://10.0.0.9:3000/websocket");
+  Meteor.connect("wss://emergencias-c4-naucalpan.herokuapp.com/websocket");
 
 }

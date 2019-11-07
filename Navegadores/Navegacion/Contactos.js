@@ -1,17 +1,70 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView, 
+import { Alert, AsyncStorage, StyleSheet, View, Text, ScrollView, 
         TextInput, TouchableOpacity, Image } from 'react-native';
+import  Conexion,{connect}  from '../../Componentes/Conexion.js';
+import Meteor, {
+    withTracker,
+    ReactiveDict,
+    Accounts,
+    MeteorListView,
+  } from "react-native-meteor";
+connect();
 
-export default class Contactos extends Component {
+class Contactos extends Component {
     constructor(props){
         super(props);
         this.state = {
-            Nombre: '',
-            Telefono: '',
+            nombre: '',
+            telefono: '',
         };
+        console.log(props.contatos);
     };
 
-    
+    async componentDidMount() {
+      const itemUsuario = await AsyncStorage.getItem('myuser');
+      const myuser = JSON.parse(itemUsuario);
+      console.log(myuser);
+      this.setState({
+        ...this.state,
+        userId: myuser.userId
+      });
+    }  
+
+    registrarContacto = async () => {
+      const nombre = this.state.nombre;
+      const telefono = this.state.telefono;
+      const contact = {
+                     nombreCompleto: nombre,
+                     numeroTelefonico: telefono,
+                   };
+      const userId = this.state.userId;
+
+      Meteor.call('contact.save',  {contact, userId} , async (err, res) => {
+            // Do whatever you want with the response
+            if(err) {
+                Alert.alert(
+                            'Error',
+                            err.message,
+                            [
+                            {text: 'OK', onPress: () => console.log('OK Pressed')},
+                            ],
+                            {cancelable: false},
+                            );
+            } else if(res){
+                Alert.alert(
+                            'Exito',
+                            'Se agrego correctamente',
+                            [
+                            {text: 'OK', onPress: () => {} },
+                            ],
+                            {cancelable: false},
+                    );
+            }
+            console.log('contact.save', err, res);
+        });
+
+        // 
+    } 
    
     render(){
         let display = this.state.Nombre;
@@ -22,8 +75,11 @@ export default class Contactos extends Component {
                             <TextInput
                                 style = {styles.input}
                                 placeholder = 'Alberto'
-                                onChangeText = {(text) => this.setState({Nombre: text})}
-                                value = {this.state.Nombre}
+                                onChangeText = {(text) => this.setState({
+                                    ...this.state,
+                                    nombre: text
+                                })}
+                                value = {this.state.nombre}
                             />
 
                         <Text style = {styles.label}> Telefono </Text>
@@ -31,8 +87,11 @@ export default class Contactos extends Component {
                                 style = {styles.input}
                                 placeholder = '55 98 98 98 98'
                                 keyboardType = 'numeric'
-                                onChangeText = {(text) => this.setState({Telefono: text})}
-                                value = {this.state.Telefono}
+                                onChangeText = {(text) => this.setState({
+                                    ...this.state,
+                                    telefono: text
+                                })}
+                                value = {this.state.telefono}
                             />
 
                         <TouchableOpacity>
@@ -45,7 +104,7 @@ export default class Contactos extends Component {
 
                         <View style = {styles.button}>
                         <TouchableOpacity style = {styles.buttonStyle} 
-                            onPress={() => alert('hola')}>
+                            onPress={() => this.registrarContacto()}>
                             <Text style = {styles.buttonText}>GUARDAR</Text>
                         </TouchableOpacity>
 
@@ -57,6 +116,13 @@ export default class Contactos extends Component {
     }
  };
  
+export default withTracker(params => {
+    Meteor.subscribe('contactsPublication', '3o9LXnTaZSRYi2YLB');
+
+    return {
+      contatos: Meteor.collection('contacts').find()
+    };
+  })(Contactos);
 
  const styles = StyleSheet.create({
     container:{

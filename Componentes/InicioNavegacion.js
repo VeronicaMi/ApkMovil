@@ -13,8 +13,13 @@ const InicioNavegacion = createStackNavigator({
     TerminosCondiciones: TerminosCondiciones,
     AvisoPrivacidad: AvisoPrivacidad,
     DrawerNav: DrawerNav,
-
-});
+},
+    {
+        headerMode: 'none',
+        navigationOptions: {
+          headerVisible: false,
+        }
+       });
 
 const InicioNav = createAppContainer(InicioNavegacion);
 

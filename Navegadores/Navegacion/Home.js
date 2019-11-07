@@ -29,13 +29,13 @@ class Home extends Component{
         locationResult: '',
         hasLocationPermissions: false,
         marker: {coords: { latitude: 37.78825, longitude: -122.4324}},
-        opcionPanico: opcion
+        opcionPanico: ''
     }
 
     async componentDidMount() {
       await this._getLocationAsync();
       const opcion = await AsyncStorage.getItem('opcionPanico');
-      console.log(opcion);
+      console.log('opcion'+opcion);
       this.setState({
         ...this.state,
         opcionPanico: opcion
@@ -49,13 +49,14 @@ class Home extends Component{
       const myuser = JSON.parse(itemUsuario);
       const data = {
                      idIncidente: opcion,
-                     userId: myuser._id,
+                     userId: myuser.userId,
                      ubicacion: {
                          lat: latitude,
-                         lng: longitude
-                      }
+                         lng: longitude,
+                      },
                     fechaHora: new Date()
                    };
+      console.log(data);
       Meteor.call('panicButton.insert',  data , async (err, res) => {
             // Do whatever you want with the response
             if(err) {
@@ -82,7 +83,7 @@ class Home extends Component{
 
         // 
     }
-    }
+  
     _getLocationAsync = async () => {
         let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if (status !== 'granted') {
@@ -107,7 +108,7 @@ class Home extends Component{
 
   onCall(){
     const args = {
-        number: '911', // String value with the number to call
+        number: '53712250', // String value with the number to call
         prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
       };
 
@@ -139,7 +140,7 @@ class Home extends Component{
                       </TouchableOpacity>
 
                       <TouchableOpacity 
-                      onPress = {() => this.botonPanico}>
+                      onPress = {() => this.botonPanico()}>
                         <Image
                             style = {styles.imageButton}
                             source = {{uri: 'https://i.postimg.cc/wT1gpq54/Boton-Panico2.png'}}

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\VeronicaMi\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-is\\values-is.xml",
+            "outputFile": "C:\\Users\\VeronicaMi\\Documents\\git\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-is\\values-is.xml",
             "map": [
                 {
                     "source": "C:\\Users\\VeronicaMi\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.0.0.aar\\8cb48e8411942492e2ad71d39b2fc981\\res\\values-is\\values-is.xml",
