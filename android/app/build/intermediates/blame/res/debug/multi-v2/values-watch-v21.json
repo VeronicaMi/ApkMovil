@@ -1,11 +1,7 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "C:\\Users\\VeronicaMi\\Documents\\git\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v21\\values-watch-v21.xml",
-=======
             "outputFile": "C:\\Users\\epvel\\Documents\\git\\ApkMovil\\ApkMovil\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v21\\values-watch-v21.xml",
->>>>>>> 4f2a5e4ff5ff7094dc55933ff12749088265c529
             "map": [
                 {
                     "source": "C:\\Users\\epvel\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.0.0.aar\\5c107c19f9908175cb77e4b695a9d211\\res\\values-watch-v21\\values-watch-v21.xml",

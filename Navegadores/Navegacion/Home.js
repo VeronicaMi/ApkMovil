@@ -32,15 +32,9 @@ class Home extends Component{
 
     async componentDidMount() {
       await this._getLocationAsync();
-      const opcion = await AsyncStorage.getItem('opcionPanico');
-      console.log('opcion'+opcion);
-      this.setState({
-        ...this.state,
-        opcionPanico: opcion
-      });
     }
     botonPanico = async () => {
-      const opcion = this.state.opcionPanico;
+      const opcion = await AsyncStorage.getItem('opcionPanico');
       const latitude = this.state.marker.coords.latitude;
       const longitude = this.state.marker.coords.longitude;
       const itemUsuario = await AsyncStorage.getItem('myuser');
@@ -69,7 +63,7 @@ class Home extends Component{
             } else if(res){
                 Alert.alert(
                             'Exito',
-                            'Se agrego correctamente',
+                            'Se envió tu alerta',
                             [
                             {text: 'OK', onPress: () => this.props.navigation.navigate('DrawerNav')},
                             ],
@@ -81,11 +75,7 @@ class Home extends Component{
 
         // 
     }
-<<<<<<< HEAD
   
-=======
-
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
     _getLocationAsync = async () => {
         let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if (status !== 'granted') {
@@ -110,13 +100,8 @@ class Home extends Component{
 
   onCall(){
     const args = {
-<<<<<<< HEAD
-        number: '53712250', // String value with the number to call
-        prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
-=======
         number: '5553712250', // String value with the number to call
         prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
       };
 
     call(args).catch(console.error);

@@ -1,11 +1,7 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "C:\\Users\\VeronicaMi\\Documents\\git\\AppMovil\\ApkMovil\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-th\\values-th.xml",
-=======
             "outputFile": "C:\\Users\\epvel\\Documents\\git\\ApkMovil\\ApkMovil\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-th\\values-th.xml",
->>>>>>> 4f2a5e4ff5ff7094dc55933ff12749088265c529
             "map": [
                 {
                     "source": "C:\\Users\\epvel\\.gradle\\caches\\transforms-1\\files-1.1\\jetified-play-services-base-16.1.0.aar\\9fb1bc7330f0dab657a4c06cfefc974f\\res\\values-th\\values.xml",

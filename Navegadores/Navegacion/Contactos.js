@@ -1,34 +1,20 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import { Alert, AsyncStorage, StyleSheet, View, Text, ScrollView, 
         TextInput, TouchableOpacity, Image } from 'react-native';
 import  Conexion,{connect}  from '../../Componentes/Conexion.js';
-=======
-import { Alert, AsyncStorage, StyleSheet, View, Text, ScrollView,
-        TextInput, TouchableOpacity, Image } from 'react-native';
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
 import Meteor, {
     withTracker,
     ReactiveDict,
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
-
-<<<<<<< HEAD
-import { Feather } from '@expo/vector-icons';
-
-connect();
-
-=======
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
+  import { Feather } from '@expo/vector-icons';
+  
 class Contactos extends Component {
     constructor(props){
         super(props);
         this.state = {
-<<<<<<< HEAD
             idContact: undefined,
-=======
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
             nombre: '',
             telefono: '',
         };
@@ -38,24 +24,15 @@ class Contactos extends Component {
     async componentDidMount() {
       const itemUsuario = await AsyncStorage.getItem('myuser');
       const myuser = JSON.parse(itemUsuario);
-<<<<<<< HEAD
-=======
-      console.log(myuser);
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
       this.setState({
         ...this.state,
         userId: myuser.userId
       });
-<<<<<<< HEAD
     }  
-=======
-    }
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
 
     registrarContacto = async () => {
       const nombre = this.state.nombre;
       const telefono = this.state.telefono;
-<<<<<<< HEAD
       const idContact = this.state.idContact;
       const contact = {
                      nombreCompleto: nombre,
@@ -105,39 +82,6 @@ class Contactos extends Component {
         telefono: numeroTelefonico,
         idContact: _id,
       });
-=======
-      const contact = {
-                     nombreCompleto: nombre,
-                     numeroTelefonico: telefono,
-                   };
-      const userId = this.state.userId;
-
-      Meteor.call('contact.save',  {contact, userId} , async (err, res) => {
-            // Do whatever you want with the response
-            if(err) {
-                Alert.alert(
-                            'Error',
-                            err.message,
-                            [
-                                {text: 'OK', onPress: () => console.log('OK Pressed')},
-                            ],
-                            {cancelable: false},
-                            );
-            } else if(res){
-                Alert.alert(
-                            'Exito',
-                            'Se agrego correctamente',
-                            [
-                            {text: 'OK', onPress: () => {} },
-                            ],
-                            {cancelable: false},
-                    );
-            }
-            console.log('contact.save', err, res);
-        });
-
-        //
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
     }
    
     render(){
@@ -165,18 +109,6 @@ class Contactos extends Component {
         return(
             <ScrollView>
                 <View style = {styles.container}>
-<<<<<<< HEAD
-                    <Text style = {styles.label}> Nombre  </Text>
-                        <TextInput
-                            style = {styles.input}
-                            placeholder = 'Alberto'
-                            onChangeText = {(text) => this.setState({
-                                ...this.state,
-                                nombre: text
-                            })}
-                            value = {this.state.nombre}
-                        />
-=======
                         <Text style = {styles.label}> Nombre  </Text>
                             <TextInput
                                 style = {styles.input}
@@ -200,26 +132,6 @@ class Contactos extends Component {
                                 value = {this.state.telefono}
                             />
 
-                        <TouchableOpacity>
-                            <Image
-                                style = {styles.imagePlus}
-                                source = {{uri: 'https://i.postimg.cc/SxkSMdQM/Anadir.png'}}
-                            />
-                            <Text style = {styles.textPlus}>Añadir contacto</Text>
-                        </TouchableOpacity>
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
-
-                    <Text style = {styles.label}> Telefono </Text>
-                        <TextInput
-                            style = {styles.input}
-                            placeholder = '55 98 98 98 98'
-                            keyboardType = 'numeric'
-                            onChangeText = {(text) => this.setState({
-                                ...this.state,
-                                telefono: text
-                            })}
-                            value = {this.state.telefono}
-                        />
                     <View style = {styles.button}>
                         <TouchableOpacity style = {styles.buttonStyle} 
                             onPress={() => this.registrarContacto()}>
@@ -233,7 +145,6 @@ class Contactos extends Component {
     }
  };
  
-<<<<<<< HEAD
 export default withTracker( params => {
     const handle = Meteor.subscribe('contactsPublication', params.screenProps.idUser);
 
@@ -242,15 +153,6 @@ export default withTracker( params => {
         contactos: handle.ready()?Meteor.collection('contacts').find({}):[]
     };
 })(Contactos);
-=======
-export default withTracker(params => {
-    Meteor.subscribe('contactsPublication', '3o9LXnTaZSRYi2YLB');
-
-    return {
-      contatos: Meteor.collection('contacts').find()
-    };
-  })(Contactos);
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
 
  const styles = StyleSheet.create({
     container:{

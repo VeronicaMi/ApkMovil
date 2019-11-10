@@ -14,7 +14,7 @@ const InicioNavegacion = createStackNavigator({
     TerminosCondiciones: TerminosCondiciones,
     AvisoPrivacidad: AvisoPrivacidad,
     DrawerNav: DrawerNav,
-<<<<<<< HEAD
+    Validacion: ValidacionTelefono,
 },
     {
         headerMode: 'none',
@@ -22,11 +22,6 @@ const InicioNavegacion = createStackNavigator({
           headerVisible: false,
         }
        });
-=======
-    Validacion: ValidacionTelefono
-
-});
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
 
 const InicioNav = createAppContainer(InicioNavegacion);
 

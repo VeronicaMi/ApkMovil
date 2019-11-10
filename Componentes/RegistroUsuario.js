@@ -103,11 +103,7 @@ class RegistroUsuario extends Component{
                             ],
                             {cancelable: false},
                     );
-<<<<<<< HEAD
-                    this.state.usuario.userId = res.userId;
-=======
                 this.setState({ usuario: {...this.state.usuario, userId: res.userId}});
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
                 await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
             }
             console.log('users.insert', err, res);
