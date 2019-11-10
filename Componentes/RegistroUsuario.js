@@ -11,14 +11,12 @@ import DatePicker from 'react-native-datepicker';
 //install npm i react-native-simple-radio-button --save
 import RadioForm, { RadioButton } from 'react-native-simple-radio-button';
 import Encabezado from './Encabezado.js';
-import  Conexion,{connect}  from './Conexion.js';
 import Meteor, {
     withTracker,
     ReactiveDict,
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
-connect();
 
 var Sexo = [
     {label: 'Femenino', value: 0 },
@@ -92,7 +90,7 @@ class RegistroUsuario extends Component{
                             'Error',
                             err.message,
                             [
-                            {text: 'OK', onPress: () => console.log('OK Pressed')},
+                                {text: 'OK', onPress: () => console.log('OK Pressed')},
                             ],
                             {cancelable: false},
                             );
@@ -101,11 +99,15 @@ class RegistroUsuario extends Component{
                             'Exito',
                             'Se agrego correctamente',
                             [
-                            {text: 'OK', onPress: () => this.props.navigation.navigate('DrawerNav')},
+                                {text: 'OK', onPress: () => this.props.navigation.navigate('DrawerNav')},
                             ],
                             {cancelable: false},
                     );
+<<<<<<< HEAD
                     this.state.usuario.userId = res.userId;
+=======
+                this.setState({ usuario: {...this.state.usuario, userId: res.userId}});
+>>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
                 await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
             }
             console.log('users.insert', err, res);

@@ -50,8 +50,8 @@ class EmergenciaMedicaView extends Component {
                                 value = {this.state.emergencia}
                             />
 
-                <OpcionEmergencia 
-                onPressChat={() => this.props.navigation.navigate('Chat')}
+                <OpcionEmergencia
+                    onPressChat={() => this.props.navigation.navigate('Chat')}
                 />
                 
             </View>

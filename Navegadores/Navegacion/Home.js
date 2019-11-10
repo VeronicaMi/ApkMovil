@@ -14,14 +14,12 @@ import * as Permissions from 'expo-permissions';
 //expo install expo-constants
 //import {Constants, MapView, Location, Permissions} from 'expo';
 import call from 'react-native-phone-call';
-import  Conexion,{connect}  from '../../Componentes/Conexion.js';
 import Meteor, {
     withTracker,
     ReactiveDict,
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
-connect();
 
 
 class Home extends Component{
@@ -83,7 +81,11 @@ class Home extends Component{
 
         // 
     }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
     _getLocationAsync = async () => {
         let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if (status !== 'granted') {
@@ -108,8 +110,13 @@ class Home extends Component{
 
   onCall(){
     const args = {
+<<<<<<< HEAD
         number: '53712250', // String value with the number to call
         prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
+=======
+        number: '5553712250', // String value with the number to call
+        prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call
+>>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
       };
 
     call(args).catch(console.error);

@@ -1,6 +1,9 @@
 import React from 'react';
 import { AsyncStorage } from 'react-native';
 import InicioNavegacion from './Componentes/InicioNavegacion.js';
+import {connect} from "./Componentes/Conexion";
+
+connect();
 
 export default class App extends React.Component{
   constructor(props){
