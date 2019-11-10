@@ -8,13 +8,16 @@ import Meteor, {
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
-import { constants } from 'http2';
+
+import { Feather } from '@expo/vector-icons';
+
 connect();
 
 class Contactos extends Component {
     constructor(props){
         super(props);
         this.state = {
+            idContact: undefined,
             nombre: '',
             telefono: '',
         };
@@ -23,7 +26,6 @@ class Contactos extends Component {
     async componentDidMount() {
       const itemUsuario = await AsyncStorage.getItem('myuser');
       const myuser = JSON.parse(itemUsuario);
-      console.log(myuser);
       this.setState({
         ...this.state,
         userId: myuser.userId
@@ -33,54 +35,77 @@ class Contactos extends Component {
     registrarContacto = async () => {
       const nombre = this.state.nombre;
       const telefono = this.state.telefono;
+      const idContact = this.state.idContact;
       const contact = {
                      nombreCompleto: nombre,
                      numeroTelefonico: telefono,
+                     _id: idContact
                    };
       const userId = this.state.userId;
-
+      
+      
       Meteor.call('contact.save',  {contact, userId} , async (err, res) => {
-            // Do whatever you want with the response
-            if(err) {
-                Alert.alert(
-                            'Error',
-                            err.message,
-                            [
-                            {text: 'OK', onPress: () => console.log('OK Pressed')},
-                            ],
-                            {cancelable: false},
-                            );
-            } else if(res){
-                Alert.alert(
-                            'Exito',
-                            'Se agrego correctamente',
-                            [
-                            {text: 'OK', onPress: () => {} },
-                            ],
-                            {cancelable: false},
-                    );
-            }
-            console.log('contact.save', err, res);
-        });
 
-        // 
+        // Do whatever you want with the response
+        if(err) {
+            Alert.alert(
+                        'Error',
+                        err.message,
+                        [
+                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                        ],
+                        {cancelable: false},
+                        );
+        } else if(res){
+            Alert.alert(
+                        'Exito',
+                        'Se agrego correctamente',
+                        [
+                        {text: 'OK', onPress: () => {} },
+                        ],
+                        {cancelable: false},
+                );
+                        
+            this.setState({
+                nombre: '',
+                telefono: '',
+                idContact: undefined,
+            });
+        }
+        console.log('contact.save', err, res);
+      });
     } 
+
+
+    editContacto = (contact) => {
+      const {nombreCompleto, numeroTelefonico, _id} = contact;
+      this.setState({
+        nombre: nombreCompleto,
+        telefono: numeroTelefonico,
+        idContact: _id,
+      });
+    }
    
     render(){
         const {ready, contactos} = this.props;
+        const editContacto = this.editContacto;
         let listContacts = undefined;
         if(!!ready) {
-            console.log(contactos)
-            // listContacts = contactos.map(function ({nombreCompleto, numeroTelefonico},index){
-            //     return (
-            //     <View key={index}>
-            //       <View style={{flexDirection: 'row'}}>
-            //           <Text style={styles.label}>{nombreCompleto}</Text>
-            //           <Text style={styles.label}>{numeroTelefonico}</Text>
-            //       </View>
-            //     </View>
-            //     );
-            //   });
+            listContacts = contactos.map(function (contacto,index){
+                const {nombreCompleto, numeroTelefonico} = contacto;
+
+                return (
+                <View key={index}>
+                  <View style={{flexDirection: 'row'}}>
+                      <Text style={styles.label}>{nombreCompleto}</Text>
+                      <Text style={styles.label}>{numeroTelefonico}</Text>
+                      <TouchableOpacity onPress={() => editContacto(contacto)}>
+                        <Feather style={styles.label} name="edit" size = {32} color = "#497580" />
+                      </TouchableOpacity>
+                  </View>
+                </View>
+                );
+              });
         }
         let display = this.state.Nombre;
         return(
@@ -113,23 +138,22 @@ class Contactos extends Component {
                             onPress={() => this.registrarContacto()}>
                             <Text style = {styles.buttonText}>GUARDAR</Text>
                         </TouchableOpacity>
-
                     </View>
+                    {listContacts}
                 </View>
             </ScrollView>
         );
     }
  };
  
-export default withTracker(params => {
-    const handle = Meteor.subscribe('contactsPublication', 'bMSjcEAYH4RnEKBmg');
+export default withTracker( params => {
+    const handle = Meteor.subscribe('contactsPublication', params.screenProps.idUser);
 
     return {
         ready: handle.ready(),
-        contactos: Meteor.collection('contacts').find({})
+        contactos: handle.ready()?Meteor.collection('contacts').find({}):[]
     };
-
-  })(Contactos);
+})(Contactos);
 
  const styles = StyleSheet.create({
     container:{
