@@ -8,6 +8,7 @@ import Meteor, {
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
+import { constants } from 'http2';
 connect();
 
 class Contactos extends Component {
@@ -17,7 +18,6 @@ class Contactos extends Component {
             nombre: '',
             telefono: '',
         };
-        console.log(props.contatos);
     };
 
     async componentDidMount() {
@@ -67,49 +67,54 @@ class Contactos extends Component {
     } 
    
     render(){
+        const {ready, contactos} = this.props;
+        let listContacts = undefined;
+        if(!!ready) {
+            console.log(contactos)
+            // listContacts = contactos.map(function ({nombreCompleto, numeroTelefonico},index){
+            //     return (
+            //     <View key={index}>
+            //       <View style={{flexDirection: 'row'}}>
+            //           <Text style={styles.label}>{nombreCompleto}</Text>
+            //           <Text style={styles.label}>{numeroTelefonico}</Text>
+            //       </View>
+            //     </View>
+            //     );
+            //   });
+        }
         let display = this.state.Nombre;
         return(
             <ScrollView>
                 <View style = {styles.container}>
-                        <Text style = {styles.label}> Nombre  </Text>
-                            <TextInput
-                                style = {styles.input}
-                                placeholder = 'Alberto'
-                                onChangeText = {(text) => this.setState({
-                                    ...this.state,
-                                    nombre: text
-                                })}
-                                value = {this.state.nombre}
-                            />
+                    <Text style = {styles.label}> Nombre  </Text>
+                        <TextInput
+                            style = {styles.input}
+                            placeholder = 'Alberto'
+                            onChangeText = {(text) => this.setState({
+                                ...this.state,
+                                nombre: text
+                            })}
+                            value = {this.state.nombre}
+                        />
 
-                        <Text style = {styles.label}> Telefono </Text>
-                            <TextInput
-                                style = {styles.input}
-                                placeholder = '55 98 98 98 98'
-                                keyboardType = 'numeric'
-                                onChangeText = {(text) => this.setState({
-                                    ...this.state,
-                                    telefono: text
-                                })}
-                                value = {this.state.telefono}
-                            />
-
-                        <TouchableOpacity>
-                            <Image
-                                style = {styles.imagePlus}
-                                source = {{uri: 'https://i.postimg.cc/SxkSMdQM/Anadir.png'}}
-                            />
-                            <Text style = {styles.textPlus}>Añadir contacto</Text>
-                        </TouchableOpacity>
-
-                        <View style = {styles.button}>
+                    <Text style = {styles.label}> Telefono </Text>
+                        <TextInput
+                            style = {styles.input}
+                            placeholder = '55 98 98 98 98'
+                            keyboardType = 'numeric'
+                            onChangeText = {(text) => this.setState({
+                                ...this.state,
+                                telefono: text
+                            })}
+                            value = {this.state.telefono}
+                        />
+                    <View style = {styles.button}>
                         <TouchableOpacity style = {styles.buttonStyle} 
                             onPress={() => this.registrarContacto()}>
                             <Text style = {styles.buttonText}>GUARDAR</Text>
                         </TouchableOpacity>
 
                     </View>
-
                 </View>
             </ScrollView>
         );
@@ -117,11 +122,13 @@ class Contactos extends Component {
  };
  
 export default withTracker(params => {
-    Meteor.subscribe('contactsPublication', '3o9LXnTaZSRYi2YLB');
+    const handle = Meteor.subscribe('contactsPublication', 'bMSjcEAYH4RnEKBmg');
 
     return {
-      contatos: Meteor.collection('contacts').find()
+        ready: handle.ready(),
+        contactos: Meteor.collection('contacts').find({})
     };
+
   })(Contactos);
 
  const styles = StyleSheet.create({
