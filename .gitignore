@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 # Created by https://www.gitignore.io/api/react,reactnative
 # Edit at https://www.gitignore.io/?templates=react,reactnative
@@ -186,7 +185,6 @@ xcuserdata/
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 DerivedData/
 *.moved-aside
-=======
 # OSX
 #
 .DS_Store
@@ -194,7 +192,6 @@ DerivedData/
 # Xcode
 #
 build/
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -203,7 +200,6 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-<<<<<<< HEAD
 
 ## Xcode Patch
 *.xcodeproj/*
@@ -311,7 +307,6 @@ buck-out/
 .fakebuckversion
 
 # End of https://www.gitignore.io/api/react,reactnative
-=======
 xcuserdata
 *.xccheckout
 *.moved-aside
@@ -369,4 +364,3 @@ ios/Pods
  *.orig.*
  web-build/
  web-report/
->>>>>>> 9293039e8c29325ee667c57de94cd0f0900e1a6d
