@@ -72,7 +72,11 @@ class RegistroUsuario extends Component{
         // Do whatever you want with the response
         if(this.state.usuario.correoElectronico === this.state.confirCorreo){
             if(this.state.check){
-                this.guardarUsuarioNuevoMetior();
+                this.verificarUsuarioNuevo((exist)=>{
+                    if(!exist) {
+                        this.guardarUsuarioNuevoMetior();
+                    }
+                });
             }else{
                 Alert.alert("Debes aceptar Terminos y Condiciones");
             }
@@ -81,6 +85,44 @@ class RegistroUsuario extends Component{
         }
 
         // 
+    }
+
+    verificarUsuarioNuevo(callback){
+        Meteor.call('users.requestAccessByPhone',  this.state.usuario.numeroTelefono , async (err, res) => {
+            if(err){
+                callback(false);
+            }else if(res) {
+                console.log('res1',res);
+                Alert.alert(
+                    'Exito',
+                    'Se encontro un usuario previamente registradp',
+                    [
+                        {text: 'OK', onPress: () => this.props.navigation.navigate('Validacion')},
+                    ],
+                    {cancelable: false},
+                );
+                this.setInfoUsuario(res);
+                callback(true);
+            }
+            console.log('users.insert', err, res);
+        });
+
+    }
+
+    setInfoUsuario(response) {
+        /**
+         *  aqui enviariamos el usuario existente de el response de mateor
+         */
+        
+        // this.setState({ 
+        //     usuario: {
+        //         ...this.state.usuario, 
+        //         userId: data.userId,
+        //         fichaMedica: res.recordId
+        //     }
+        // });
+        await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
+
     }
 
     guardarUsuarioNuevoMetior(){
