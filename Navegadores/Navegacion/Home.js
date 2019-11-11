@@ -26,7 +26,7 @@ class Home extends Component{
     state = {
         locationResult: '',
         hasLocationPermissions: false,
-        marker: {coords: { latitude: 37.78825, longitude: -122.4324}},
+        marker: {coords: { latitude: 0, longitude: 0}},
         opcionPanico: ''
     }
 

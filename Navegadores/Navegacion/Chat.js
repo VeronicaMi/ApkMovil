@@ -16,6 +16,7 @@ import Meteor, {
   } from "react-native-meteor";
 
 import { Ionicons } from '@expo/vector-icons';
+import JavaTwilio from "./TwilioServ";
 
 /** Connect to server.*/
 Meteor.connect("ws://10.0.0.9:3000/websocket");
@@ -33,16 +34,15 @@ class Chat extends Component{
   
 
   insert () {
-      const mssg = {
-        usuario: this.props.messages[0].usuario,
-        body: this.state.mensaje,
-        timestamp: new Date().getTime()
-      };
-      this.props.messages.push(mssg);
-      Meteor.call('messages.insert',  mssg , (err, res) => {
-        // Do whatever you want with the response
-        console.log('messages.insert', err, res);
-      });
+
+      //this.props.messages.push(mssg);
+      console.log('dbhabdsahbdhasbdjh jdv sagdvsad jsad hsad');
+      JavaTwilio.sendMessage( this.state.mensaje, (err) => {
+          console.log(err)
+      }, (msg) => {
+          console.log(msg)
+      } );
+
       this.setState({
         mensaje:''
       });

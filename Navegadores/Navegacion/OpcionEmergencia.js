@@ -7,26 +7,22 @@ import {
     Image,
 } from 'react-native';
 
-export default class OpcionEmergencia extends Component{
+export default class OpcionEmergencia extends Component {
 
-   
-    render(){
-        return(
-            <View style = {styles.container}>
-                <View style = {styles.contIcon}>
-                    
 
-                    <TouchableOpacity 
-                        onPress = { () => this.props.onPressChat()}>
+    render() {
+        return (
+            <View style={styles.container}>
+                <View style={styles.contIcon}>
+                    <TouchableOpacity
+                        onPress={() => this.props.onPressChat()}>
                         <Image
-                            style = {styles.imageChat}
-                            source = {{uri: 'https://i.postimg.cc/sxbzxP6v/ChatC4.png'}}
-                            
+                            style={styles.imageChat}
+                            source={{uri: 'https://i.postimg.cc/sxbzxP6v/ChatC4.png'}}
                         />
-                        <Text style = {styles.textChat}>Chatear C4</Text>
+                        <Text style={styles.textChat}>Chatear C4</Text>
                     </TouchableOpacity>
                 </View>
-
             </View>
         );
     }
@@ -34,23 +30,23 @@ export default class OpcionEmergencia extends Component{
 
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
 
     },
 
-    contIcon:{
+    contIcon: {
         flexDirection: 'row',
     },
-    
-    imageChat:{
+
+    imageChat: {
         marginTop: 80,
         margin: 50,
         height: 100,
         width: 100,
     },
 
-    textChat:{
+    textChat: {
         marginLeft: 40,
         marginTop: -40,
         fontSize: 20,

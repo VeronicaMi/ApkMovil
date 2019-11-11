@@ -1,6 +1,7 @@
 package com.apkmovil;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
@@ -41,12 +42,13 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-          new ReanimatedPackage(),
-          new RNGestureHandlerPackage(),
-          new RNScreensPackage(),
-          new ModuleRegistryAdapter(mModuleRegistryProvider),
-              new MapsPackage()
+              new MainReactPackage(),
+              new ReanimatedPackage(),
+              new RNGestureHandlerPackage(),
+              new RNScreensPackage(),
+              new ModuleRegistryAdapter(mModuleRegistryProvider),
+              new MapsPackage(),
+              new JavaTwilioPackage()
       );
     }
 

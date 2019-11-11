@@ -51,11 +51,11 @@ export default class BotonPanico extends Component{
                        PolicialEmer: '',
                        ProtecCivilEmer: ProtecCivilEmer,
                        tipoEmergencia: ProtecCivilEmer});
-    }
+    };
 
     guardarOpcionPanico = async (opcion) => {
         await AsyncStorage.setItem('opcionPanico', opcion);
-    }
+    };
 
     componentDidMount = async () => {
       const opcion = await AsyncStorage.getItem('opcionPanico');
@@ -66,7 +66,7 @@ export default class BotonPanico extends Component{
                        ProtecCivilEmer: opcion,
                        tipoEmergencia: opcion});     
       }
-    }
+    };
 
     render(){
         return(
