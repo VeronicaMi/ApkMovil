@@ -109,11 +109,11 @@ class RegistroUsuario extends Component{
 
     }
 
-    setInfoUsuario(response) {
+    async setInfoUsuario(response) {
         /**
          *  aqui enviariamos el usuario existente de el response de mateor
          */
-        
+
         // this.setState({ 
         //     usuario: {
         //         ...this.state.usuario, 
