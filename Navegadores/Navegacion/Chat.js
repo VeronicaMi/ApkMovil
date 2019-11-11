@@ -28,21 +28,31 @@ class Chat extends Component{
       this.state = {
           messages: props.messages,
           mensaje : '',
+          usuario: undefined
       };
   };
 
-  
+  async componentDidMount() {
+      const itemUsuario = await AsyncStorage.getItem('myuser');
+      this.setState({usuario: itemUsuario});
+  }
 
-  insert () {
-
-      //this.props.messages.push(mssg);
-      console.log('dbhabdsahbdhasbdjh jdv sagdvsad jsad hsad');
+    insert () {
+      const mssg = {
+        usuario: `${this.state.usuario.nombre} ${this.state.usuario.apellidoPaterno}`,
+        body: this.state.mensaje,
+        timestamp: new Date().getTime()
+      };
+      this.props.messages.push(mssg);
+      Meteor.call('messages.insert',  mssg , (err, res) => {
+        // Do whatever you want with the response
+        console.log('messages.insert', err, res);
+      });
       JavaTwilio.sendMessage( this.state.mensaje, (err) => {
           console.log(err)
       }, (msg) => {
           console.log(msg)
       } );
-
       this.setState({
         mensaje:''
       });
