@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {TextInput, View, Button, AsyncStorage} from 'react-native';
+import {TextInput, View, Button, AsyncStorage, Alert} from 'react-native';
 import Meteor from 'react-native-meteor';
 
 export default class ValidacionTelefono extends Component {
@@ -20,17 +20,34 @@ export default class ValidacionTelefono extends Component {
         }
     }
 
-    enviar() {
-        Meteor.call('users.validate.phoneNumber', '5570073986', this.state.code, (err, resp) => {
+
+    async enviar() {
+        const itemUsuario = await AsyncStorage.getItem('myuser');
+        const myuser = JSON.parse(itemUsuario);
+        Meteor.call('users.validate.phoneNumber', myuser.numeroTelefono, this.state.code, (err, resp) => {
             if (err) {
                 console.log(err);
             } else {
                 console.log(resp);
-                resp
-                    ? this.setState({msg: 'Verificación exitosa, ahora puede acceder a su cuenta.'})
-                    : this.setState({msg: 'No se pudo verificar su número'});
+                if(!!resp) {
+                    this.successCallback('Verificación exitosa, ahora puede acceder a su cuenta.')
+                } else{
+                    this.setState({msg: 'No se pudo verificar su número'});
+                }
             }
         });
+    }
+    
+    successCallback(msg) {
+
+        Alert.alert(
+            'Exito',
+            msg,
+            [
+                {text: 'OK', onPress: () => this.props.navigation.navigate('DrawerNav')},
+            ],
+            {cancelable: false},
+    );
     }
 
     render() {

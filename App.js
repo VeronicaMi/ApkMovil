@@ -10,19 +10,33 @@ export default class App extends React.Component{
     super(props);
     this.state = {
       userId: undefined,
+      fichaMedica: undefined
     };
   };
   async componentDidMount() {
-    const itemUsuario = await AsyncStorage.getItem('myuser')||"{}";
-    const myuser = JSON.parse(itemUsuario);
-    this.setState({
-      ...this.state,
-      userId: myuser.userId
-    });
+    const itemUsuario = await AsyncStorage.getItem('myuser')||undefined;
+    if(itemUsuario) {
+      const myuser = JSON.parse(itemUsuario);
+      this.setState({
+        ...this.state,
+        userId: myuser.userId,
+        fichaMedica: myuser.fichaMedica
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        userId: undefined,
+        fichaMedica: undefined
+      });
+    }
   }  
   render(){
     return(
-      <InicioNavegacion screenProps={{idUser: this.state.userId}} />
+      <InicioNavegacion screenProps={{
+        idUser: this.state.userId,
+        elem:undefined,
+        fichaMedica: this.state.fichaMedica
+      }} />
     )
   }
 }

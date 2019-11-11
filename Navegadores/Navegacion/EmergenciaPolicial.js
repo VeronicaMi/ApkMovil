@@ -3,27 +3,60 @@ import { StyleSheet, View, Text, Alert,
     Picker, TextInput } from 'react-native';
 import OpcionEmergencia from './OpcionEmergencia.js'
 import {createStackNavigator} from 'react-navigation';
+import Meteor from "react-native-meteor";
 import Chat from './Chat.js';
 
 class EmergenciaPolicialView extends Component{ 
     static navigationOptions = {
         header: null,
     }
-
-    state = {PolicialEmer: '' }
-    updatePolicialEmer = (PolicialEmer) => {
-        this.setState({PolicialEmer: PolicialEmer})
-    }
-
     constructor(props){
         super(props);
         this.state = {
             emergencia: '',
+            PolicialEmer: '',
+            emergencias: []
         };
     };
+    componentDidMount() {
+        Meteor.call('get.incidentebyIdTipo',  "2" , async (err, res) => {
 
-      
+            if(err) {
+                Alert.alert(
+                            'Error',
+                            err.message,
+                            [
+                            {text: 'OK', onPress: () => console.log('OK Pressed')},
+                            ],
+                            {cancelable: false},
+                            );
+            } else if(res){
+                console.log(res)
+                this.setState({
+                    ...this.state,
+                    emergencias: res
+                });
+            }
+        });
+    }
+    updatePolicialEmer = (PolicialEmer) => {
+        this.setState({
+            ...this.state,
+            PolicialEmer: PolicialEmer
+        })
+    }
     render(){
+        const itemsEmergencias = this.state.emergencias.map(function (emergencia,index){
+            const {id_final, incidente} = emergencia;
+
+            return (
+                <Picker.Item
+                key={index}
+                label = {incidente}
+                value = {id_final}/>
+            );
+        });
+
         return(
             <View style = {styles.container}>
 
@@ -31,29 +64,17 @@ class EmergenciaPolicialView extends Component{
 
                     <Picker 
                             style = {styles.tipoEmergencia}
-                            selectedValue = {this.state.PolicialEmer} onValueChange = {this.updatePolicialEmer}>
-                            <Picker.Item label = 'Robo' value = 'robo'/>
-                            <Picker.Item label = 'Secuestro' value = 'secuestro'/>
-                            <Picker.Item label = 'Disparo de arma' value = 'disparo'/>
-                            <Picker.Item label = 'Violencia Familiar' value = 'violenciaFamiliar'/>
-                            <Picker.Item label = 'Abuso sexual' value = 'abusoSexual'/>
-                            <Picker.Item label = 'Homicidio' value = 'homicidio'/>
-                            <Picker.Item label = 'Allanamiento de morada' value = 'allanamientoMorada'/>
+                            selectedValue = {this.state.PolicialEmer} 
+                            onValueChange = {(el)=>this.updatePolicialEmer(el)}>
+                            {itemsEmergencias}
                     </Picker>
-
-                <Text style = {styles.label}>Otro</Text>
-
-                <TextInput
-                        style = {styles.input}
-                        placeholder = 'Especifique'
-                        onChangeText = {(text) => this.setState({emergencia: text})}
-                        value = {this.state.emergencia}
-                    />
-                
+                    
                 <OpcionEmergencia
-                onPressChat={() => this.props.navigation.navigate('Chat')}
+                    onPressChat={() => 
+                        this.props.navigation.navigate('Chat', {
+                            id_final: this.state.PolicialEmer
+                        })}
                 />
-
             </View>
         );
     }

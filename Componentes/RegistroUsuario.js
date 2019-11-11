@@ -95,18 +95,47 @@ class RegistroUsuario extends Component{
                             {cancelable: false},
                             );
             } else if(res){
-                Alert.alert(
-                            'Exito',
-                            'Se agrego correctamente',
-                            [
-                                {text: 'OK', onPress: () => this.props.navigation.navigate('DrawerNav')},
-                            ],
-                            {cancelable: false},
-                    );
-                this.setState({ usuario: {...this.state.usuario, userId: res.userId}});
-                await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
+                console.log('res',res);
+                this.generaFichaMedica({
+                    userId: res.userId,
+                });
             }
             console.log('users.insert', err, res);
+        });
+    }
+
+    generaFichaMedica(data) {
+        Meteor.call('medical.save',  data , async (err, res) => {
+            console.log('data',data);
+            if(err) {
+                Alert.alert(
+                            'Error',
+                            err.message,
+                            [
+                                {text: 'OK', onPress: () => console.log('OK Pressed')},
+                            ],
+                            {cancelable: false},
+                            );
+            } else if(res) {
+                console.log('res1',res);
+                Alert.alert(
+                    'Exito',
+                    'Se agrego correctamente',
+                    [
+                        {text: 'OK', onPress: () => this.props.navigation.navigate('Validacion')},
+                    ],
+                    {cancelable: false},
+                );
+
+                this.setState({ 
+                    usuario: {
+                        ...this.state.usuario, 
+                        userId: data.userId,
+                        fichaMedica: res.recordId
+                    }
+                });
+                await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
+            }
         });
     }
 

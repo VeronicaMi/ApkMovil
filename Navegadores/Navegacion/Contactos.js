@@ -4,31 +4,48 @@ import { Alert, AsyncStorage, StyleSheet, View, Text, ScrollView,
 import  Conexion,{connect}  from '../../Componentes/Conexion.js';
 import Meteor, {
     withTracker,
+    Tracker,
     ReactiveDict,
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
   import { Feather } from '@expo/vector-icons';
   
-class Contactos extends Component {
+  export default class Contactos extends Component {
     constructor(props){
         super(props);
         this.state = {
             idContact: undefined,
             nombre: '',
             telefono: '',
+            contactos: []
         };
-        console.log(props.contatos);
     };
 
     async componentDidMount() {
       const itemUsuario = await AsyncStorage.getItem('myuser');
       const myuser = JSON.parse(itemUsuario);
+      this.buscarContatos(myuser.userId);
       this.setState({
         ...this.state,
-        userId: myuser.userId
+        userId: myuser.userId,
       });
-    }  
+    } 
+
+    buscarContatos(userId){
+        const handle = Meteor.subscribe('contactsPublication', userId);
+        this.contactsTracker = Tracker.autorun(() => {
+            if (handle.ready()) {
+                const contacts = Meteor.collection('contacts').find({});
+                console.log('userId',userId);
+                console.log('contacts',contacts);
+                this.setState({
+                  ...this.state,
+                  contactos: contacts,
+                });
+            }
+        });
+    }
 
     registrarContacto = async () => {
       const nombre = this.state.nombre;
@@ -69,6 +86,7 @@ class Contactos extends Component {
                 telefono: '',
                 idContact: undefined,
             });
+            this.buscarContatos(userId);
         }
         console.log('contact.save', err, res);
       });
@@ -85,26 +103,22 @@ class Contactos extends Component {
     }
    
     render(){
-        const {ready, contactos} = this.props;
-        const editContacto = this.editContacto;
-        let listContacts = undefined;
-        if(!!ready) {
-            listContacts = contactos.map(function (contacto,index){
-                const {nombreCompleto, numeroTelefonico} = contacto;
+        const editContacto = this.editContacto;        
+        const listContacts = this.state.contactos.map(function (contacto,index){
+            const {nombreCompleto, numeroTelefonico} = contacto;
 
-                return (
-                <View key={index}>
-                  <View style={{flexDirection: 'row'}}>
-                      <Text style={styles.label}>{nombreCompleto}</Text>
-                      <Text style={styles.label}>{numeroTelefonico}</Text>
-                      <TouchableOpacity onPress={() => editContacto(contacto)}>
-                        <Feather style={styles.label} name="edit" size = {32} color = "#497580" />
-                      </TouchableOpacity>
-                  </View>
+            return (
+            <View key={index}>
+                <View style={{flexDirection: 'row'}}>
+                    <Text style={styles.label}>{nombreCompleto}</Text>
+                    <Text style={styles.label}>{numeroTelefonico}</Text>
+                    <TouchableOpacity onPress={() => editContacto(contacto)}>
+                    <Feather style={styles.label} name="edit" size = {32} color = "#497580" />
+                    </TouchableOpacity>
                 </View>
-                );
-              });
-        }
+            </View>
+            );
+            });
         let display = this.state.Nombre;
         return(
             <ScrollView>
@@ -143,16 +157,8 @@ class Contactos extends Component {
             </ScrollView>
         );
     }
- };
- 
-export default withTracker( params => {
-    const handle = Meteor.subscribe('contactsPublication', params.screenProps.idUser);
+ }; 
 
-    return {
-        ready: handle.ready(),
-        contactos: handle.ready()?Meteor.collection('contacts').find({}):[]
-    };
-})(Contactos);
 
  const styles = StyleSheet.create({
     container:{

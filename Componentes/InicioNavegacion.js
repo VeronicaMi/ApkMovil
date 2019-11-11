@@ -13,8 +13,8 @@ const InicioNavegacion = createStackNavigator({
     RegistroUsuario: RegistroUsuario,
     TerminosCondiciones: TerminosCondiciones,
     AvisoPrivacidad: AvisoPrivacidad,
-    DrawerNav: DrawerNav,
     Validacion: ValidacionTelefono,
+    DrawerNav: DrawerNav,
 },
     {
         headerMode: 'none',

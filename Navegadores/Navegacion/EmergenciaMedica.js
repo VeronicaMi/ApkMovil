@@ -8,50 +8,76 @@ import { StyleSheet, View, Text, Alert,
 
 import OpcionEmergencia from './OpcionEmergencia.js'
 import {createStackNavigator} from 'react-navigation';
+import Meteor from "react-native-meteor";
 import Chat from './Chat.js';
 
 
 class EmergenciaMedicaView extends Component {
-    state = {MedicalEmer: '' }
-    updateMedicalEmer = (MedicalEmer) => {
-        this.setState({MedicalEmer: MedicalEmer})
-    }
 
     constructor(props){
         super(props);
         this.state = {
-            emergencia: '',
+            emergencias: [],
+            MedicalEmer: ''
         };
     };
+    
+    updateMedicalEmer = (MedicalEmer) => {
+        this.setState({MedicalEmer: MedicalEmer})
+    }
+
+    componentDidMount() {
+        Meteor.call('get.incidentebyIdTipo',  "1" , async (err, res) => {
+
+            if(err) {
+                Alert.alert(
+                            'Error',
+                            err.message,
+                            [
+                            {text: 'OK', onPress: () => console.log('OK Pressed')},
+                            ],
+                            {cancelable: false},
+                            );
+            } else if(res){
+                console.log(res)
+                this.setState({
+                    ...this.state,
+                    emergencias: res
+                });
+            }
+        });
+    }
 
    render(){
+
+        const itemsEmergencias = this.state.emergencias.map(function (emergencia,index){
+            const {id_final, incidente} = emergencia;
+            
+            return (
+                <Picker.Item
+                key={index}
+                label = {incidente}
+                value = {id_final}/>
+            );
+        });
+
         return(
             <View style = {styles.container}>
                 
                 <Text style = {styles.label}>Tipo de emergencia</Text>
 
                 <Picker 
-                            style = {styles.tipoEmergencia}
-                            selectedValue = {this.state.MedicalEmer} onValueChange = {this.updateMedicalEmer}>
-                            <Picker.Item label = 'Accidente de coche con heridos' value = 'accidenteCoche'/>
-                            <Picker.Item label = 'Electrocutado' value = 'electrocutado'/>
-                            <Picker.Item label = 'Infarto' value = 'infarto'/>
-                            <Picker.Item label = 'Sobredosis' value = 'sobredosis'/>
-                            <Picker.Item label = 'Trabajo de parto' value = 'parto'/>
-                            <Picker.Item label = 'Ahogado' value = 'ahogado'/>
-                    </Picker>
-
-                    <Text style = {styles.label}>Otro</Text>
-
-                    <TextInput
-                                style = {styles.input}
-                                placeholder = 'Especifique'
-                                onChangeText = {(text) => this.setState({emergencia: text})}
-                                value = {this.state.emergencia}
-                            />
+                style = {styles.tipoEmergencia}
+                selectedValue = {this.state.MedicalEmer} 
+                onValueChange = {(el)=>this.updateMedicalEmer(el)}>
+                    {itemsEmergencias}
+                </Picker>
 
                 <OpcionEmergencia
-                    onPressChat={() => this.props.navigation.navigate('Chat')}
+                    onPressChat={() => 
+                        this.props.navigation.navigate('Chat', {
+                            id_final: this.state.MedicalEmer
+                        })}
                 />
                 
             </View>
@@ -59,9 +85,8 @@ class EmergenciaMedicaView extends Component {
     }
 };
 
-
 const EmergenciaMedica = createStackNavigator({
-    EmergenciaMedicaView:EmergenciaMedicaView, 
+    EmergenciaMedicaView: EmergenciaMedicaView, 
     Chat: Chat,
 },
 {

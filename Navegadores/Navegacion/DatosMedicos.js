@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {
+    Alert,
+    AsyncStorage,
     StyleSheet,
     Text,
     View,
@@ -8,6 +10,12 @@ import {
     ScrollView,
     TextInput
 } from 'react-native';
+import Meteor, {
+    Tracker,
+    ReactiveDict,
+    Accounts,
+    MeteorListView,
+  } from "react-native-meteor";
 //import Encabezado from '../Secciones/Encabezado.js'
 import RadioForm, { RadioButton } from 'react-native-simple-radio-button';
 
@@ -31,7 +39,66 @@ export default class DatosMedicos extends Component{
             talla: '',
         };
     };
-    
+    async componentDidMount() {
+        const itemUsuario = await AsyncStorage.getItem('myuser');
+        const myuser = JSON.parse(itemUsuario);
+        this.consultaDatosMedicos(myuser.fichaMedica);
+        this.setState({
+          ...this.state,
+          userId: myuser.userId,
+        });
+      } 
+  
+    consultaDatosMedicos(fichaMedica){
+        const handle = Meteor.subscribe('medicalRecordPublication', fichaMedica );
+        this.contactsTracker = Tracker.autorun(() => {
+            if (handle.ready()) {
+                const fichaMedicas = Meteor.collection('medical_records').find({});
+                const fichaMedica = fichaMedicas[0];
+                console.log('fichaMedicas',fichaMedicas);
+                this.setState({
+                  ...this.state,
+                  ...fichaMedica,
+                  peso: (fichaMedica.peso||0) + "",
+                  talla: (fichaMedica.talla||0) + ""
+                });
+            }
+        });
+    }
+
+    guardarFichaMedica(){
+        const data = {
+            ...this.state,
+            peso: parseInt(this.state.peso),
+            talla: parseInt(this.state.talla),
+        };
+        console.log(data);
+
+        Meteor.call('medical.save',  data , async (err, res) => {
+
+            // Do whatever you want with the response
+            if(err) {
+                Alert.alert(
+                            'Error',
+                            err.message,
+                            [
+                            {text: 'OK', onPress: () => console.log('OK Pressed')},
+                            ],
+                            {cancelable: false},
+                            );
+            } else if(res){
+                Alert.alert(
+                            'Exito',
+                            'Se agrego correctamente',
+                            [
+                            {text: 'OK', onPress: () => {} },
+                            ],
+                            {cancelable: false},
+                    );
+            }
+            console.log('contact.save', err, res);
+          });
+    }
    
     render(){
         return(
@@ -41,40 +108,55 @@ export default class DatosMedicos extends Component{
                         <TextInput
                             style = {styles.input}
                             placeholder = 'O +'
-                            onChangeText = {(text) => this.setState({GrupoSanguineo: text})}
-                            value = {this.state.GrupoSanguineo}
+                            onChangeText = {(text) => this.setState({
+                                ...this.state,
+                                grupoSanguineo: text
+                            })}
+                            value = {this.state.grupoSanguineo}
                         />
 
                     <Text style = {styles.label}> Alergias </Text>
                         <TextInput
                             style = {styles.input}
                             placeholder = 'Penicilina'
-                            onChangeText = {(text) => this.setState({Alergias: text})}
-                            value = {this.state.Alergias}
+                            onChangeText = {(text) => this.setState({
+                                ...this.state,
+                                alergias: text
+                            })}
+                            value = {this.state.alergias}
                         />
 
                     <Text style = {styles.label}> Enfermedad Crónica </Text>
                         <TextInput
                             style = {styles.input}
                             placeholder = 'Diabetes'
-                            onChangeText = {(text) => this.setState({EnfermedadCronica: text})}
-                            value = {this.state.EnfermedadCronica}
+                            onChangeText = {(text) => this.setState({
+                                ...this.state,
+                                enfermedadCronica: text
+                            })}
+                            value = {this.state.enfermedadCronica}
                         />
 
                     <Text style = {styles.label}> Padecimientos </Text>
                         <TextInput
                             style = {styles.input}
                             placeholder = 'No se'
-                            onChangeText = {(text) => this.setState({Padecimiento: text})}
-                            value = {this.state.Padecimiento}
+                            onChangeText = {(text) => this.setState({
+                                ...this.state,
+                                padecimiento: text
+                            })}
+                            value = {this.state.padecimiento}
                         />
 
                     <Text style = {styles.label}> Suministro de Medicamentos </Text>
                         <TextInput
                             style = {styles.input}
                             placeholder = 'Niinguno'
-                            onChangeText = {(text) => this.setState({SuministroMedico: text})}
-                            value = {this.state.SuministroMedico}
+                            onChangeText = {(text) => this.setState({
+                                ...this.state,
+                                suministroMedico: text
+                            })}
+                            value = {this.state.suministroMedico}
                         />
 
                     <Text style = {styles.label}> Peso </Text>
@@ -82,8 +164,11 @@ export default class DatosMedicos extends Component{
                             style = {styles.input}
                             placeholder = '50' 
                             keyboardType = 'numeric'
-                            onChangeText = {(text) => this.setState({Peso: text})}
-                            value = {this.state.Peso}
+                            onChangeText = {(text) => this.setState({
+                                ...this.state,
+                                peso: text
+                            })}
+                            value = {this.state.peso}
                         />
 
                     <Text style = {styles.label}> Talla </Text>
@@ -91,23 +176,16 @@ export default class DatosMedicos extends Component{
                             style = {styles.input}
                             placeholder = '150'
                             keyboardType = 'numeric'
-                            onChangeText = {(text) => this.setState({Talla: text})}
-                            value = {this.state.Talla}
-                        />
-
-                    <Text style = {styles.label}> Donante de Órganos </Text>
-                        <RadioForm
-                            style={styles.donante}
-                            radio_props={DonanteOrganos}
-                            initial={0}
-                            formHorizontal={true}
-                            labelHorizontal={true}
-                            onPress={(value) => {this.setState({value:value})}}
+                            onChangeText = {(text) => this.setState({
+                                ...this.state,
+                                talla: text
+                            })}
+                            value = {this.state.talla}
                         />
 
                     <View style = {styles.button}>
                         <TouchableOpacity style = {styles.buttonStyle} 
-                            onPress={() => alert('Hola')}>
+                            onPress={() => this.guardarFichaMedica()}>
                             <Text style = {styles.buttonText}>GUARDAR</Text>
                         </TouchableOpacity>
                     </View>
@@ -118,6 +196,7 @@ export default class DatosMedicos extends Component{
         );
     }
 };
+
 
 const styles = StyleSheet.create({
     container:{
