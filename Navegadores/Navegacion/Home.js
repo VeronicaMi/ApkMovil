@@ -27,13 +27,22 @@ class Home extends Component{
         locationResult: '',
         hasLocationPermissions: false,
         marker: {coords: { latitude: 37.78825, longitude: -122.4324}},
-        opcionPanico: ''
+        opcionPanico: '',
+        locked: false
     }
 
     async componentDidMount() {
       await this._getLocationAsync();
     }
     botonPanico = async () => {
+      if(this.state.locked)
+        return;
+
+      this.setState({
+        ...this.state,
+        locked: true
+      });
+
       const opcion = await AsyncStorage.getItem('opcionPanico');
       const latitude = this.state.marker.coords.latitude;
       const longitude = this.state.marker.coords.longitude;
@@ -50,7 +59,6 @@ class Home extends Component{
                    };
       console.log(data);
       Meteor.call('panicButton.insert',  data , async (err, res) => {
-            // Do whatever you want with the response
             if(err) {
                 Alert.alert(
                             'Error',
@@ -70,6 +78,10 @@ class Home extends Component{
                             {cancelable: false},
                     );
             }
+            this.setState({
+              ...this.state,
+              locked: false
+            });
             console.log('users.insert', err, res);
         });
 
@@ -107,6 +119,8 @@ class Home extends Component{
     call(args).catch(console.error);
 };
     render(){
+      const locked = this.state.locked;
+      console.log('locked', locked);
         return(
           <ScrollView>
           <View style = {styles.container}>
@@ -132,9 +146,15 @@ class Home extends Component{
                       </TouchableOpacity>
 
                       <TouchableOpacity 
-                      onPress = {() => this.botonPanico()}>
+                      disabled={locked}
+                      onPress = {() => {
+                        if(!locked) 
+                          this.botonPanico()
+                      }}>
                         <Image
-                            style = {styles.imageButton}
+                            style = {{...styles.imageButton,
+                              opacity: locked? 0.3: 1
+                            }}
                             source = {{uri: 'https://i.postimg.cc/wT1gpq54/Boton-Panico2.png'}}
 
                         />
