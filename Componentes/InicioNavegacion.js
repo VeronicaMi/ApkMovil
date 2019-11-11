@@ -13,10 +13,15 @@ const InicioNavegacion = createStackNavigator({
     RegistroUsuario: RegistroUsuario,
     TerminosCondiciones: TerminosCondiciones,
     AvisoPrivacidad: AvisoPrivacidad,
+    Validacion: ValidacionTelefono,
     DrawerNav: DrawerNav,
-    Validacion: ValidacionTelefono
-
-});
+},
+    {
+        headerMode: 'none',
+        navigationOptions: {
+          headerVisible: false,
+        }
+       });
 
 const InicioNav = createAppContainer(InicioNavegacion);
 

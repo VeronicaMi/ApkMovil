@@ -15,6 +15,7 @@ export default class TerminosCondiciones extends Component{
         return(
             <ScrollView>
                 <View style = {styles.container}>
+                    <Text style = {styles.textoTitulo}>Términos y Condiciones</Text>
                     <Text style = {styles.texto}>
 Este contrato describe los términos y condiciones generales (en delante únicamente "TÉRMINOS Y CONDICIONES") aplicables al uso de los contenidos, productos y servicios ofrecidos a través de la aplicación móvil De corazón por Naucalpan (en adelante, " APP MÓVIL "), del cual es titular Verónica Miranda y Larry Jaguey (en adelante, "TITULAR') quien tiene su domicilio establecido en Ia Ciudad de México, en la siguiente dirección:
 
@@ -114,9 +115,11 @@ La relación entre el USUARIO y Veronica Miranda y Larry Jaguey se regirá por I
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-
     },
-
+    textoTitulo:{
+        flex: 1,
+        fontSize: 16,
+    },
     texto:{
         flex: 1,
         fontSize: 12,

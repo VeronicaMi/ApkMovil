@@ -46,7 +46,8 @@ class RegistroUsuario extends Component{
                 colonia: '',
                 codigoPostal: '',
                 role: 'mobile-app-user',
-                password: '1234'
+                password: '1234',
+                //verificationCode: '0',
             },
            
             confirCorreo: '',
@@ -68,8 +69,64 @@ class RegistroUsuario extends Component{
 
 
     guardarUsuarioNuevo = () => {
+        // Do whatever you want with the response
+        if(this.state.usuario.correoElectronico === this.state.confirCorreo){
+            if(this.state.check){
+                this.verificarUsuarioNuevo((exist)=>{
+                    if(!exist) {
+                        this.guardarUsuarioNuevoMetior();
+                    }
+                });
+            }else{
+                Alert.alert("Debes aceptar Terminos y Condiciones");
+            }
+        }else{
+            Alert.alert("Tu correo no coincide");
+        }
+
+        // 
+    }
+
+    verificarUsuarioNuevo(callback){
+        Meteor.call('users.requestAccessByPhone',  this.state.usuario.numeroTelefono , async (err, res) => {
+            if(err){
+                callback(false);
+            }else if(res) {
+                console.log('res1',res);
+                Alert.alert(
+                    'Exito',
+                    'Se encontro un usuario previamente registradp',
+                    [
+                        {text: 'OK', onPress: () => this.props.navigation.navigate('Validacion')},
+                    ],
+                    {cancelable: false},
+                );
+                this.setInfoUsuario(res);
+                callback(true);
+            }
+            console.log('users.insert', err, res);
+        });
+
+    }
+
+    async setInfoUsuario(response) {
+        /**
+         *  aqui enviariamos el usuario existente de el response de mateor
+         */
+
+        // this.setState({ 
+        //     usuario: {
+        //         ...this.state.usuario, 
+        //         userId: data.userId,
+        //         fichaMedica: res.recordId
+        //     }
+        // });
+        await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
+
+    }
+
+    guardarUsuarioNuevoMetior(){
         Meteor.call('users.insert',  this.state.usuario , async (err, res) => {
-            // Do whatever you want with the response
             if(err) {
                 Alert.alert(
                             'Error',
@@ -80,21 +137,48 @@ class RegistroUsuario extends Component{
                             {cancelable: false},
                             );
             } else if(res){
-                Alert.alert(
-                            'Exito',
-                            'Se agrego correctamente',
-                            [
-                                {text: 'OK', onPress: () => this.props.navigation.navigate('DrawerNav')},
-                            ],
-                            {cancelable: false},
-                    );
-                this.setState({ usuario: {...this.state.usuario, userId: res.userId}});
-                await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
+                console.log('res',res);
+                this.generaFichaMedica({
+                    userId: res.userId,
+                });
             }
             console.log('users.insert', err, res);
         });
+    }
 
-        // 
+    generaFichaMedica(data) {
+        Meteor.call('medical.save',  data , async (err, res) => {
+            console.log('data',data);
+            if(err) {
+                Alert.alert(
+                            'Error',
+                            err.message,
+                            [
+                                {text: 'OK', onPress: () => console.log('OK Pressed')},
+                            ],
+                            {cancelable: false},
+                            );
+            } else if(res) {
+                console.log('res1',res);
+                Alert.alert(
+                    'Exito',
+                    'Se agrego correctamente',
+                    [
+                        {text: 'OK', onPress: () => this.props.navigation.navigate('Validacion')},
+                    ],
+                    {cancelable: false},
+                );
+
+                this.setState({ 
+                    usuario: {
+                        ...this.state.usuario, 
+                        userId: data.userId,
+                        fichaMedica: res.recordId
+                    }
+                });
+                await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
+            }
+        });
     }
 
     render(){
@@ -194,14 +278,7 @@ class RegistroUsuario extends Component{
                             maxDate="31-12-2021"
                             confirmBtnText="Confirm"
                             cancelBtnText="Cancel"
-                            customStyles={{
-                                //dateIcon: {
-                                //position: 'absolute',
-                                //left: 5,
-                                //top: 4,
-                                //marginLeft: 5
-                                //},
-                            }}
+                            
                             onDateChange={(date) => {
                                 const usuario = this.state.usuario;
                                 usuario.fechaNacimento = date;
@@ -288,7 +365,8 @@ class RegistroUsuario extends Component{
                     <CheckBox
                             style = {styles.checkBox}
                             Size = {40}
-                            value = {this.state.check}
+                            //value = {this.state.check}
+                            checked = {this.state.check}
                             onChange = {() => this.checkBoxTest()}       
                    />
 
@@ -431,7 +509,7 @@ const styles = StyleSheet.create({
 
 
 export default withTracker(params => {
-    // Meteor.subscribe('users');
+     //Meteor.subscribe('users');
    
     return {
       //users: Meteor.collection('users').find(),

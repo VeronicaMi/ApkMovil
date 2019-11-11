@@ -25,6 +25,11 @@ class Chat extends Component{
 
   constructor(props){
       super(props);
+      const { navigation } = props;
+  
+      const id_final = navigation.getParam('id_final', undefined);
+      const otro = navigation.getParam('otro', undefined);
+
       this.state = {
           messages: props.messages,
           mensaje : '',

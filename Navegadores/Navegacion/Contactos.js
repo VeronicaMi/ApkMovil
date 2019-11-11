@@ -1,70 +1,124 @@
 import React, { Component } from 'react';
-import { Alert, AsyncStorage, StyleSheet, View, Text, ScrollView,
+import { Alert, AsyncStorage, StyleSheet, View, Text, ScrollView, 
         TextInput, TouchableOpacity, Image } from 'react-native';
+import  Conexion,{connect}  from '../../Componentes/Conexion.js';
 import Meteor, {
     withTracker,
+    Tracker,
     ReactiveDict,
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
-
-class Contactos extends Component {
+  import { Feather } from '@expo/vector-icons';
+  
+  export default class Contactos extends Component {
     constructor(props){
         super(props);
         this.state = {
+            idContact: undefined,
             nombre: '',
             telefono: '',
+            contactos: []
         };
-        console.log(props.contatos);
     };
 
     async componentDidMount() {
       const itemUsuario = await AsyncStorage.getItem('myuser');
       const myuser = JSON.parse(itemUsuario);
-      console.log(myuser);
+      this.buscarContatos(myuser.userId);
       this.setState({
         ...this.state,
-        userId: myuser.userId
+        userId: myuser.userId,
       });
+    } 
+
+    buscarContatos(userId){
+        const handle = Meteor.subscribe('contactsPublication', userId);
+        this.contactsTracker = Tracker.autorun(() => {
+            if (handle.ready()) {
+                const contacts = Meteor.collection('contacts').find({});
+                console.log('userId',userId);
+                console.log('contacts',contacts);
+                this.setState({
+                  ...this.state,
+                  contactos: contacts,
+                });
+            }
+        });
     }
 
     registrarContacto = async () => {
       const nombre = this.state.nombre;
       const telefono = this.state.telefono;
+      const idContact = this.state.idContact;
       const contact = {
                      nombreCompleto: nombre,
                      numeroTelefonico: telefono,
+                     _id: idContact
                    };
       const userId = this.state.userId;
-
+      
+      
       Meteor.call('contact.save',  {contact, userId} , async (err, res) => {
-            // Do whatever you want with the response
-            if(err) {
-                Alert.alert(
-                            'Error',
-                            err.message,
-                            [
-                                {text: 'OK', onPress: () => console.log('OK Pressed')},
-                            ],
-                            {cancelable: false},
-                            );
-            } else if(res){
-                Alert.alert(
-                            'Exito',
-                            'Se agrego correctamente',
-                            [
-                            {text: 'OK', onPress: () => {} },
-                            ],
-                            {cancelable: false},
-                    );
-            }
-            console.log('contact.save', err, res);
-        });
 
-        //
+        // Do whatever you want with the response
+        if(err) {
+            Alert.alert(
+                        'Error',
+                        err.message,
+                        [
+                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                        ],
+                        {cancelable: false},
+                        );
+        } else if(res){
+            Alert.alert(
+                        'Exito',
+                        'Se agrego correctamente',
+                        [
+                        {text: 'OK', onPress: () => {} },
+                        ],
+                        {cancelable: false},
+                );
+                        
+            this.setState({
+                nombre: '',
+                telefono: '',
+                idContact: undefined,
+            });
+            this.buscarContatos(userId);
+        }
+        console.log('contact.save', err, res);
+      });
+    } 
+
+
+    editContacto = (contact) => {
+      const {nombreCompleto, numeroTelefonico, _id} = contact;
+      this.setState({
+        nombre: nombreCompleto,
+        telefono: numeroTelefonico,
+        idContact: _id,
+      });
     }
    
     render(){
+        const editContacto = this.editContacto;        
+        const listContacts = this.state.contactos.map(function (contacto,index){
+            const {nombreCompleto, numeroTelefonico} = contacto;
+
+            return (
+            <View key={index}>
+                <View style={{flexDirection: 'row'}}>
+                    <Text style={styles.label}>{nombreCompleto}</Text>
+                    <Text style={styles.label}>{numeroTelefonico}</Text>
+                    <TouchableOpacity onPress={() => editContacto(contacto)}>
+                    <Feather style={styles.label} name="edit" size = {32} color = "#497580" />
+                    </TouchableOpacity>
+                </View>
+            </View>
+            );
+            });
         let display = this.state.Nombre;
         return(
             <ScrollView>
@@ -92,35 +146,19 @@ class Contactos extends Component {
                                 value = {this.state.telefono}
                             />
 
-                        <TouchableOpacity>
-                            <Image
-                                style = {styles.imagePlus}
-                                source = {{uri: 'https://i.postimg.cc/SxkSMdQM/Anadir.png'}}
-                            />
-                            <Text style = {styles.textPlus}>Añadir contacto</Text>
-                        </TouchableOpacity>
-
-                        <View style = {styles.button}>
+                    <View style = {styles.button}>
                         <TouchableOpacity style = {styles.buttonStyle} 
                             onPress={() => this.registrarContacto()}>
                             <Text style = {styles.buttonText}>GUARDAR</Text>
                         </TouchableOpacity>
-
                     </View>
-
+                    {listContacts}
                 </View>
             </ScrollView>
         );
     }
- };
- 
-export default withTracker(params => {
-    Meteor.subscribe('contactsPublication', '3o9LXnTaZSRYi2YLB');
+ }; 
 
-    return {
-      contatos: Meteor.collection('contacts').find()
-    };
-  })(Contactos);
 
  const styles = StyleSheet.create({
     container:{

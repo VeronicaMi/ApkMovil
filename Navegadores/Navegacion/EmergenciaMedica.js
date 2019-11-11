@@ -17,6 +17,7 @@ class EmergenciaMedicaView extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            emergencias: [],
             otraEmergencia: '',
             MedicalEmer: '10104',
             userId: '',
@@ -26,6 +27,25 @@ class EmergenciaMedicaView extends Component {
     };
 
     async componentDidMount() {
+        Meteor.call('get.incidentebyIdTipo',  "1" , async (err, res) => {
+
+            if(err) {
+                Alert.alert(
+                    'Error',
+                    err.message,
+                    [
+                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                    ],
+                    {cancelable: false},
+                );
+            } else if(res){
+                console.log(res)
+                this.setState({
+                    ...this.state,
+                    emergencias: res
+                });
+            }
+        });
         await this._getLocationAsync();
         const itemUsuario = await AsyncStorage.getItem('myuser');
         const myuser = JSON.parse(itemUsuario);
@@ -67,7 +87,9 @@ class EmergenciaMedicaView extends Component {
                 let stateName = await JavaTwilio.connectToRoom(response.roomName, response.token);
                 console.log('respuesta a connect: ', stateName);
                 if (stateName) {
-                    this.props.navigation.navigate('Chat');
+                    this.props.navigation.navigate('Chat', {
+                        id_final: this.state.MedicalEmer
+                    });
                 }
             } else {
                 alert(response);
@@ -95,71 +117,76 @@ class EmergenciaMedicaView extends Component {
         });
     };
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text style={styles.label}>Tipo de emergencia</Text>
+   render(){
+
+        const itemsEmergencias = this.state.emergencias.map(function (emergencia,index){
+            const {id_final, incidente} = emergencia;
+
+            return (
+                <Picker.Item
+                key={index}
+                label = {incidente}
+                value = {id_final}/>
+            );
+        });
+
+        return(
+            <View style = {styles.container}>
+
+                <Text style = {styles.label}>Tipo de emergencia</Text>
+
                 <Picker
-                    style={styles.tipoEmergencia}
-                    selectedValue={this.state.MedicalEmer} onValueChange={this.updateMedicalEmer}>
-                    <Picker.Item label='Accidente de coche con heridos' value='10104'/>
-                    <Picker.Item label='Electrocutado' value='10309'/>
-                    <Picker.Item label='Infarto' value='10304'/>
-                    <Picker.Item label='Sobredosis' value='10324'/>
-                    <Picker.Item label='Trabajo de parto' value='10325'/>
-                    <Picker.Item label='Ahogado' value='10301'/>
+                style = {styles.tipoEmergencia}
+                selectedValue = {this.state.MedicalEmer}
+                onValueChange = {(el)=>this.updateMedicalEmer(el)}>
+                    {itemsEmergencias}
                 </Picker>
-                <Text style={styles.label}>Otro</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder='Especifique'
-                    onChangeText={(text) => this.setState({otraEmergencia: text})}
-                    value={this.state.otraEmergencia}
-                />
+
                 <OpcionEmergencia
                     //onPressChat={() => this.props.navigation.navigate('Chat')}
                     onPressChat={this.requestAssistance.bind(this)}
                 />
+                
             </View>
         );
     }
-}
-
+};
 
 const EmergenciaMedica = createStackNavigator({
-        EmergenciaMedicaView: EmergenciaMedicaView,
-        Chat: Chat,
-    },
-    {
-        headerMode: 'none',
-        navigationOptions: {
-            headerVisible: false,
-        }
-    });
+    EmergenciaMedicaView: EmergenciaMedicaView,
+    Chat: Chat,
+},
+{
+    headerMode: 'none',
+    navigationOptions: {
+      headerVisible: false,
+    }
+   });
+
 
 export default EmergenciaMedica;
 
 const styles = StyleSheet.create({
-    container: {
+    container:{
         flex: 1,
     },
 
-    label: {
+    label:{
         marginTop: 20,
         fontWeight: 'bold',
         fontSize: 18,
         paddingLeft: 20,
     },
 
-    tipoEmergencia: {
-
+    tipoEmergencia:{
+        
         marginLeft: 36,
         fontSize: 18,
-
+        
     },
 
-    input: {
-        margin: 5,
+    input:{
+        margin:5,
         marginLeft: 25,
         borderBottomWidth: 2,
         borderBottomColor: '#803c3f',
