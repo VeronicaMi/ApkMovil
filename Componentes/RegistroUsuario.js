@@ -162,7 +162,7 @@ class RegistroUsuario extends Component{
                 console.log('res1',res);
                 Alert.alert(
                     'Exito',
-                    'Se agrego correctamente',
+                    'Registrado correctamente',
                     [
                         {text: 'OK', onPress: () => this.props.navigation.navigate('Validacion')},
                     ],
@@ -252,6 +252,7 @@ class RegistroUsuario extends Component{
                         <TextInput
                             style = {styles.input}
                             placeholder = 'veronica@escom.mx'
+                            keyboardType = 'email-address'
                             onChangeText = {(text) => {
                                 const usuario = this.state.usuario;
                                 usuario.correoElectronico = text;
@@ -263,6 +264,7 @@ class RegistroUsuario extends Component{
                         <TextInput
                             style = {styles.input}
                             placeholder = 'veronica@escom.mx'
+                            keyboardType = 'email-address'
                             onChangeText = {(text) => this.setState({confirCorreo: text})}
                             value = {this.state.confirCorreo}
                         />
@@ -270,7 +272,7 @@ class RegistroUsuario extends Component{
                     <Text style = {styles.label}> Ingresa tu fecha de nacimiento</Text>
                         <DatePicker
                             style={styles.calendario}
-                            date={this.state.FechaNacimiento} //initial date from state
+                            date={this.state.fechaNacimiento} //initial date from state
                             mode="date" //The enum of date, datetime and time
                             placeholder="Selecciona tu fecha"
                             format="DD-MM-YYYY"
@@ -282,7 +284,7 @@ class RegistroUsuario extends Component{
                             onDateChange={(date) => {
                                 const usuario = this.state.usuario;
                                 usuario.fechaNacimento = date;
-                                this.setState({...this.state, usuario})}}
+                                this.setState({...this.state, fechaNacimento: date})}}
                         />
 
                 <Text style = {styles.label}> Sexo </Text>

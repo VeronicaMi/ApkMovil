@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {TextInput, View, Button, AsyncStorage, Alert} from 'react-native';
+import {TextInput, View, Button, AsyncStorage, Alert,
+           StyleSheet, Text } from 'react-native';
 import Meteor from 'react-native-meteor';
 
 export default class ValidacionTelefono extends Component {
@@ -52,8 +53,13 @@ export default class ValidacionTelefono extends Component {
 
     render() {
         return (
-            <View>
-                <TextInput onChangeText={this.onChangeText.bind(this)}>
+            <View style = {styles.container}>
+                <Text style = {styles.titulo}> Código de verificación </Text>
+                <TextInput 
+                style = {styles.input}
+                keyboardType = 'numeric'
+                maxLength={4}
+                onChangeText={this.onChangeText.bind(this)}>
                 </TextInput>
                 <Button
                     title={'Enviar'}
@@ -62,3 +68,28 @@ export default class ValidacionTelefono extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+
+    },
+
+    titulo:{
+        fontSize: 28,
+        justifyContent: 'center',
+        paddingLeft: 15,
+        margin: 5,
+    },
+
+    input:{
+        margin:15,
+        marginLeft: 40,
+        justifyContent: 'center',
+        fontSize: 16,
+        borderBottomWidth: 2,
+        borderBottomColor: '#803c3f',
+        width: 200,
+    },
+
+});
