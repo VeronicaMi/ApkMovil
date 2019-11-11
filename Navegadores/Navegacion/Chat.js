@@ -9,11 +9,8 @@ import {
 //https://www.npmjs.com/package/react-native-meteor
 
 import Meteor, {
-    withTracker,
-    ReactiveDict,
-    Accounts,
-    MeteorListView,
-  } from "react-native-meteor";
+    withTracker, Tracker,
+} from "react-native-meteor";
 
 import { Ionicons } from '@expo/vector-icons';
 import JavaTwilio from "./TwilioServ";
@@ -31,7 +28,7 @@ class Chat extends Component{
       const otro = navigation.getParam('otro', undefined);
 
       this.state = {
-          messages: props.messages,
+          messages: [],
           mensaje : '',
           usuario: undefined
       };
@@ -40,6 +37,19 @@ class Chat extends Component{
   async componentDidMount() {
       const itemUsuario = await AsyncStorage.getItem('myuser');
       this.setState({usuario: itemUsuario});
+      console.log(this.props.navigation.state.params.room);
+      const handle = Meteor.subscribe('reportMessagesPublication', this.props.navigation.state.params.room);
+      this.messagesTracker = Tracker.autorun(() => {
+          if (handle.ready()) {
+              const messages = Meteor.collection('messages').find({});
+              this.setState({ messages });
+          }
+      });
+
+  }
+
+  componentWillUnmount() {
+      this.messagesTracker.stop();
   }
 
     insert () {
@@ -48,11 +58,7 @@ class Chat extends Component{
         body: this.state.mensaje,
         timestamp: new Date().getTime()
       };
-      this.props.messages.push(mssg);
-      Meteor.call('messages.insert',  mssg , (err, res) => {
-        // Do whatever you want with the response
-        console.log('messages.insert', err, res);
-      });
+      //this.props.messages.push(mssg);
       JavaTwilio.sendMessage( this.state.mensaje, (err) => {
           console.log(err)
       }, (msg) => {
@@ -65,8 +71,8 @@ class Chat extends Component{
 
   render (){
 
-      const list = this.props.messages.map(function ({usuario,body,timestamp},index){
-          const d = new Date(timestamp);
+      const list = this.props.messages.map(function ({tipoEmisor,body,time},index){
+          const d = new Date(time);
           const dformat = !d.getMonth() ?'-': [d.getMonth()+1,
                      d.getDate(),
                      d.getFullYear()].join('/')+' '+
@@ -75,13 +81,23 @@ class Chat extends Component{
                      d.getSeconds()].join(':');
 
           return (
-          <View   key={index}
-                  style={ styles.dateView }>
-            <View style={{flexDirection: 'row'}}>
-                <Text style = {styles.dateText}>{dformat}</Text>
-                <Text style={styles.msnText}>{body}</Text>
-            </View>
-          </View>
+              <View key={index} >
+                  <View style={{flexDirection: 'row'}}>
+                      {console.log(tipoEmisor)}
+                      {tipoEmisor === 'operator'
+                          ? <View style={styles.msgLeft}>
+                              <Text style={styles.dateText}>{dformat}</Text>
+                              <View style={styles.msg}>
+                                  <Text style={styles.msnText}>{body}</Text>
+                              </View>
+                          </View>
+                          : <View style={styles.msgRight}>
+                              <View style={styles.msg}>
+                                  <Text style={styles.msnText}>{body}</Text>
+                              </View>
+                          </View>}
+                  </View>
+              </View>
           );
         });
 
@@ -145,6 +161,11 @@ export default withTracker(params => {
         fontSize: 10,
       },
 
+      msg: {
+          display: 'flex',
+          flexDirection: 'column',
+      },
+
       msnText:{
         backgroundColor:'#497580', 
         borderRadius: 24,
@@ -153,11 +174,23 @@ export default withTracker(params => {
         fontSize: 14,
       },
 
+      msgRight: {
+          display: 'flex',
+          justifyContent: 'flex-end',
+          alignSelf: 'flex-end'
+      },
+
+      msgLeft: {
+          display: 'flex',
+          justifyContent: 'flex-start',
+          alignSelf: 'flex-start'
+      },
+
       msnTextVista:{
         flex: 7, 
         backgroundColor: '#fff',
-        alignSelf: 'flex-end',
-        justifyContent: 'flex-end',
+        //alignSelf: 'flex-end',
+        //justifyContent: 'flex-end',
         paddingBottom: 10
       },
 

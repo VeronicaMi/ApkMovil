@@ -88,7 +88,8 @@ class EmergenciaMedicaView extends Component {
                 console.log('respuesta a connect: ', stateName);
                 if (stateName) {
                     this.props.navigation.navigate('Chat', {
-                        id_final: this.state.MedicalEmer
+                        id_final: this.state.MedicalEmer,
+                        room: response.roomName
                     });
                 }
             } else {
