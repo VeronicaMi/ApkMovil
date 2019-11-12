@@ -34,6 +34,7 @@ public class TwilioVideoConnector extends AppCompatActivity {
     private Room room;
     private LocalParticipant localParticipant = null;
     private LocalDataTrack localDataTrack = null;
+    private boolean disconnectedFromOnDestroy;
     // Map used to map remote data tracks to remote participants
     private final Map<RemoteDataTrack, RemoteParticipant> dataTrackRemoteParticipantMap =
             new HashMap<>();
@@ -49,8 +50,31 @@ public class TwilioVideoConnector extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("entro en metodo on create");
+        System.out.println("------------entro en metodo on create");
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        /*
+         * Always disconnect from the room before leaving the Activity to
+         * ensure any memory allocated to the Room resource is freed.
+         */
+        if (room != null && room.getState() != Room.State.DISCONNECTED) {
+            room.disconnect();
+            disconnectedFromOnDestroy = true;
+        }
+
+        /*
+         * Release the local audio and video tracks ensuring any memory allocated to audio
+         * or video is freed.
+         */
+        if (localDataTrack != null) {
+            localDataTrack.release();
+            localDataTrack = null;
+        }
+
+        super.onDestroy();
     }
 
     /**
@@ -146,6 +170,12 @@ public class TwilioVideoConnector extends AppCompatActivity {
                 .build();
 
         room = Video.connect(this.context, connectOptions, roomListener(this.context));
+    }
+
+    public void disconnectFromRoom() {
+        if (room != null) {
+            room.disconnect();
+        }
     }
 
     public Room getRoom() {

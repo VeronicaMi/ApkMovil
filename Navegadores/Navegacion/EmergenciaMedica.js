@@ -19,7 +19,7 @@ class EmergenciaMedicaView extends Component {
         this.state = {
             emergencias: [],
             otraEmergencia: '',
-            MedicalEmer: '10104',
+            MedicalEmer: '10101',
             userId: '',
             location: '',
             hasLocationPermissions: false
@@ -28,7 +28,6 @@ class EmergenciaMedicaView extends Component {
 
     async componentDidMount() {
         Meteor.call('get.incidentebyIdTipo',  "1" , async (err, res) => {
-
             if(err) {
                 Alert.alert(
                     'Error',
@@ -65,10 +64,6 @@ class EmergenciaMedicaView extends Component {
         this.setState({MedicalEmer})
     };
 
-    sayHiFromJava() {
-        JavaTwilio.sayHi( (err) => {console.log(err)}, (msg) => {console.log(msg)} );
-    }
-
     requestAssistance() {
         // 1. Se construye el JSON con la petición:
         const report =  {
@@ -87,6 +82,7 @@ class EmergenciaMedicaView extends Component {
                 let stateName = await JavaTwilio.connectToRoom(response.roomName, response.token);
                 console.log('respuesta a connect: ', stateName);
                 if (stateName) {
+                    console.log(this.props);
                     this.props.navigation.navigate('Chat', {
                         id_final: this.state.MedicalEmer,
                         room: response.roomName
@@ -122,7 +118,6 @@ class EmergenciaMedicaView extends Component {
 
         const itemsEmergencias = this.state.emergencias.map(function (emergencia,index){
             const {id_final, incidente} = emergencia;
-
             return (
                 <Picker.Item
                 key={index}
@@ -131,27 +126,24 @@ class EmergenciaMedicaView extends Component {
             );
         });
 
-        return(
-            <View style = {styles.container}>
+       return (
+           <View style={styles.container}>
+               <Text style={styles.label}>Tipo de emergencia</Text>
+               <Picker
+                   style={styles.tipoEmergencia}
+                   selectedValue={this.state.MedicalEmer}
+                   onValueChange={(el) => this.updateMedicalEmer(el)}>
+                   {itemsEmergencias}
+               </Picker>
 
-                <Text style = {styles.label}>Tipo de emergencia</Text>
+               <OpcionEmergencia
+                   onPressChat={this.requestAssistance.bind(this)}
+               />
 
-                <Picker
-                style = {styles.tipoEmergencia}
-                selectedValue = {this.state.MedicalEmer}
-                onValueChange = {(el)=>this.updateMedicalEmer(el)}>
-                    {itemsEmergencias}
-                </Picker>
-
-                <OpcionEmergencia
-                    //onPressChat={() => this.props.navigation.navigate('Chat')}
-                    onPressChat={this.requestAssistance.bind(this)}
-                />
-                
-            </View>
-        );
+           </View>
+       );
     }
-};
+}
 
 const EmergenciaMedica = createStackNavigator({
     EmergenciaMedicaView: EmergenciaMedicaView,

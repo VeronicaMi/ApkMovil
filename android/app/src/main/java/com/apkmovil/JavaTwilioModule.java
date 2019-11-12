@@ -61,4 +61,14 @@ public class JavaTwilioModule extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    public void disconnect(Callback errorCallback, Callback successCallback) {
+        try {
+            twilio.disconnectFromRoom();
+            successCallback.invoke("Su conexión con el C4 ha terminado");
+        } catch (Exception e) {
+            errorCallback.invoke(e.getMessage());
+        }
+    }
+
 }

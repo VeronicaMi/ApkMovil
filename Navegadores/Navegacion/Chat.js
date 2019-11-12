@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet, Text, View, TextInput,
-    TouchableOpacity, AsyncStorage, FlatList
+    StyleSheet, Text, View, TextInput, Alert,
+    TouchableOpacity, AsyncStorage, FlatList, BackHandler,
+    ToastAndroid
 } from 'react-native';
 import Meteor, {
     withTracker, Tracker,
@@ -36,11 +37,43 @@ class Chat extends Component{
                 this.setState({ messages });
             }
         });
-
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
     }
 
     componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
         this.messagesTracker.stop();
+    }
+
+    handleBackButton = () => {
+        Alert.alert(
+            'Terminar reporte',
+            '¿De verdad desea abandonar el reporte de su emergencia?',
+            [
+                {
+                    text: 'Cancelar',
+                    onPress: () => ToastAndroid.showWithGravity('Continuamos en comunicación ...',
+                        ToastAndroid.SHORT, ToastAndroid.CENTER),
+                    style: 'cancel',
+                },
+                {
+                    text: 'Sí, terminar', onPress: () => {
+                        setTimeout(() => {
+                            this.props.navigation.navigate('Home');
+                        }, 2000);
+                        JavaTwilio.disconnect(
+                            (error) => {
+                                console.log(error);
+                            },
+                            (resp) => {
+                                ToastAndroid.showWithGravity(resp, ToastAndroid.SHORT, ToastAndroid.CENTER);
+                            });
+                    }
+                }
+            ],
+            {cancelable: false},
+        );
+        return true;
     }
 
     insert () {
@@ -55,7 +88,6 @@ class Chat extends Component{
     };
 
     render (){
-        console.log(this.props.messages);
         return(
             <View style={{flex: 1, flexDirection: 'column'}}>
                 <FlatList
@@ -86,7 +118,6 @@ class Chat extends Component{
 }
 
 function Item ({message}) {
-    console.log(message);
     const d = new Date(message.time);
     const dformat = !d.getMonth() ?'-': [d.getMonth()+1,
             d.getDate(),
