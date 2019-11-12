@@ -201,10 +201,10 @@ contIcon:{
 },
 
     imagePhone:{
-      marginTop: 69,
+      marginTop: 50,
       marginLeft: 30,
-        height: 100,
-        width: 100,
+        height: 110,
+        width: 110,
     },
     textPhone:{
       marginLeft: 30,
@@ -212,7 +212,7 @@ contIcon:{
   },
 
     imageButton:{
-      marginTop: 28,
+      marginTop: 20,
       marginLeft: 60,
       height: 140,
       width: 140,

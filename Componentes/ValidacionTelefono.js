@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {TextInput, View, Button, AsyncStorage, Alert,
            StyleSheet, Text } from 'react-native';
 import Meteor from 'react-native-meteor';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class ValidacionTelefono extends Component {
 
@@ -56,14 +57,18 @@ export default class ValidacionTelefono extends Component {
             <View style = {styles.container}>
                 <Text style = {styles.titulo}> Código de verificación </Text>
                 <TextInput 
-                style = {styles.input}
-                keyboardType = 'numeric'
-                maxLength={4}
-                onChangeText={this.onChangeText.bind(this)}>
+                    style = {{margin:10, marginLeft: 40, borderBottomWidth: 2, borderBottomColor: '#803c3f',
+                    width: 300, fontSize: 22, marginTop: 50}}
+                    keyboardType = 'numeric'
+                    maxLength={4}
+                    onChangeText={this.onChangeText.bind(this)}>
                 </TextInput>
-                <Button
-                    title={'Enviar'}
-                    onPress={this.enviar.bind(this)}/>
+                <TouchableOpacity
+                    style = {{flex: 1, marginRight: 50, marginLeft: 50, marginTop: 10, alignItems: 'center',
+                    borderColor: '#803c3f', borderBottomWidth: 15, borderTopWidth: 15, backgroundColor: '#803c3f',justifyContent: 'center', alignItems: 'center'}}
+                    onPress={()=> this.enviar()}>
+                        <Text style = {{fontSize: 20, color: '#ffffff'}}>Enviar</Text>
+                </TouchableOpacity>
             </View>
         );
     }

@@ -212,7 +212,7 @@ const CustomDrawerContentComponent = (props) => (
                       style = {{ width:260, height:70,}}
                       source = {{uri: 'https://i.postimg.cc/hjp4WKjM/Logo-Naucalpan.png'}}
                 />
-                <Text style = {{textAlign: 'center', fontSize:16, fontWeight: 'bold', }}>Usuario Nombre</Text>
+                
             </Body>
         </Header>
           <Content>
@@ -307,3 +307,4 @@ DrawerNavigatorExample.navigationOptions = {header: null};
 //const DrawerNav = createAppContainer(DrawerNavigatorExample);
 export default DrawerNavigatorExample;
 
+/*<Text style = {{textAlign: 'center', fontSize:16, fontWeight: 'bold', }}>Usuario Nombre</Text>*/

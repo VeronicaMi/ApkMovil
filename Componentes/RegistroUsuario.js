@@ -106,7 +106,6 @@ class RegistroUsuario extends Component{
                     ],
                     {cancelable: false},
                 );
-                this.setInfoUsuario(res);
                 callback(true);
             }
             console.log('users.insert', err, res);
@@ -176,12 +175,13 @@ class RegistroUsuario extends Component{
             <ScrollView>
             <View style = {styles.container}>
                 <Encabezado/>
-
+                <View style = {styles.buttonLarge}>
                 <TouchableOpacity
+                    style = {{ justifyContent: 'center', alignItems: 'center',}}
                     onPress = {()=>this.props.navigation.navigate('RecuperacionUsuario')}>
-                    <Text>¡Ya estoy registrado!</Text>
+                    <Text style = {{fontSize: 20, color: '#ffffff'}}>¡Ya cuento con una cuenta!</Text>
                 </TouchableOpacity>
-
+                </View>
                 <Text style = {styles.heading}> Registro </Text>
                     
                     <Text style = {styles.titulo}> Datos telefónicos </Text>
@@ -190,6 +190,7 @@ class RegistroUsuario extends Component{
                             style = {styles.input}
                             placeholder = '5528980930'
                             keyboardType = 'numeric'
+                            maxLength = {10}
                             onChangeText = {(text) => {
                                 const usuario = this.state.usuario;
                                 usuario.numeroTelefono = text;
@@ -268,7 +269,7 @@ class RegistroUsuario extends Component{
                     <Text style = {styles.label}> Ingresa tu fecha de nacimiento</Text>
                         <DatePicker
                             style={styles.calendario}
-                            date={this.state.fechaNacimiento} //initial date from state
+                            date={this.state.usuario.fechaNacimento} //initial date from state
                             mode="date" //The enum of date, datetime and time
                             placeholder="Selecciona tu fecha"
                             format="DD-MM-YYYY"
@@ -427,7 +428,7 @@ const styles = StyleSheet.create({
         marginLeft: 40,
         borderBottomWidth: 2,
         borderBottomColor: '#803c3f',
-        width: 310,
+        width: 280,
     },
 
     buttonContainer: {
@@ -463,6 +464,19 @@ const styles = StyleSheet.create({
         flex: 3,
         marginRight: 100,
         marginLeft: 100,
+        alignItems: 'center',
+        borderColor: '#803c3f',
+        borderBottomWidth: 5,
+        borderTopWidth: 5,
+        backgroundColor: '#803c3f',
+    },
+
+    
+    buttonLarge:{
+        flex: 1,
+        marginRight: 50,
+        marginLeft: 50,
+        marginTop: 20,
         alignItems: 'center',
         borderColor: '#803c3f',
         borderBottomWidth: 5,

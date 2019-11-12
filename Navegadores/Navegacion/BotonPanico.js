@@ -58,6 +58,14 @@ export default class BotonPanico extends Component{
             
         const opcionStored = await AsyncStorage.getItem('opcionPanico');
         console.log('opcion'+opcionStored);
+        Alert.alert(
+            'Exito',
+            'Se agrego correctamente',
+            [
+            {text: 'OK', onPress: () => {} },
+            ],
+            {cancelable: false},
+                );
     }
 
     componentDidMount = async () => {

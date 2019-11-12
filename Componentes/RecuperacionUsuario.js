@@ -22,13 +22,23 @@ import Meteor, {
             codigo: ''
         };
     }
+
     solicitarCodigoValidacion() {
         this.setState({
             ...this.state,
             sended: true
         });
-        this.envioCodigo();
+        if(this.state.telefono == ''){
+            this.setState({
+                ...this.state,
+                sended: false
+            })
+            Alert.alert('Debes ingresar un número')
+        }
+        else
+            this.envioCodigo();
     }
+
     envioCodigo() {
         Meteor.call('users.requestAccessByPhone',  this.state.telefono , async (err, res) => {
             if(err){
@@ -45,13 +55,14 @@ import Meteor, {
             console.log('users.insert', err, res);
         });
     }
+
     validarCodigoVerificacion() {
-        
         Meteor.call('users.loginByPhone',  this.state.telefono , parseInt(this.state.codigo), async (err, res) => {
             if(err){
+                
             }else if(res) {
-                this.props.navigation.navigate('DrawerNav');
                 await this.setInfoUsuario(res);
+                this.props.navigation.navigate('DrawerNav');                
             }
             console.log('users.insert', err, res);
         });
@@ -85,29 +96,46 @@ import Meteor, {
             component = (
                 <View>
                     <TextInput 
-                    placeholder = "Número teléfono"
-                    onChangeText = { (text) => this.setState({
-                            ...this.state,
-                            telefono : text
-                        }) 
-                    }
-                    value = {this.state.telefono} />
-
-                    <TouchableOpacity onPress={()=> this.solicitarCodigoValidacion()}>
-                        <Text> Verificar número telefonico</Text>
-                    </TouchableOpacity>
+                        style = {{margin:10, marginLeft: 40, borderBottomWidth: 2, borderBottomColor: '#803c3f',
+                                    width: 280, fontSize: 22, marginTop: 50}}
+                        placeholder = "Número teléfono"
+                        keyboardType = 'numeric'
+                        maxLength={10}
+                        onChangeText = { (text) => this.setState({
+                                ...this.state,
+                                telefono : text
+                            }) 
+                        }
+                        value = {this.state.telefono} />
+                    <View >
+                        <TouchableOpacity 
+                        style = {{justifyContent: 'center', alignItems: 'center', flex: 1, marginRight: 50, marginLeft: 50, marginTop: 10, alignItems: 'center',
+                        borderColor: '#803c3f', borderBottomWidth: 15, borderTopWidth: 15, backgroundColor: '#803c3f',}}
+                        onPress={()=> this.solicitarCodigoValidacion()}>
+                            <Text style = {{fontSize: 20, color: '#ffffff'}}> Verificar número telefónico</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             );
         } else {
             component = (
-                <View>
+                <View >
                     <TextInput 
-                    placeholder = "Código"
-                    onChangeText = { (text) => this.setState({...this.state, codigo:text}) }
-                    value = {this.state.codigo} />
-                    <TouchableOpacity onPress = {()=>this.validarCodigoVerificacion()}>
-                        <Text> Verficar código</Text>
-                    </TouchableOpacity>
+                        style = {{margin:10, marginLeft: 40, borderBottomWidth: 2, borderBottomColor: '#803c3f',
+                                    width: 280, fontSize: 22, marginTop: 50}}
+                        placeholder = "Código"
+                        keyboardType = 'numeric'
+                        maxLength={4}
+                        onChangeText = { (text) => this.setState({...this.state, codigo:text}) }
+                        value = {this.state.codigo} />
+                    <View>
+                        <TouchableOpacity 
+                            style = {{flex: 1, marginRight: 50, marginLeft: 50, marginTop: 10, alignItems: 'center',
+                            borderColor: '#803c3f', borderBottomWidth: 15, borderTopWidth: 15, backgroundColor: '#803c3f',justifyContent: 'center', alignItems: 'center'}}
+                            onPress = {()=>this.validarCodigoVerificacion()}>
+                            <Text style = {{fontSize: 20, color: '#ffffff'}}> Verficar código</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             );
 
