@@ -15,14 +15,14 @@ import * as Permissions from 'expo-permissions';
 //import {Constants, MapView, Location, Permissions} from 'expo';
 import call from 'react-native-phone-call';
 import Meteor, {
-    withTracker,
+    Tracker,
     ReactiveDict,
     Accounts,
     MeteorListView,
   } from "react-native-meteor";
 
 
-class Home extends Component{
+  export default class Home extends Component{
     state = {
         locationResult: '',
         hasLocationPermissions: false,
@@ -32,7 +32,29 @@ class Home extends Component{
     }
 
     async componentDidMount() {
+      const itemUsuario = await AsyncStorage.getItem('myuser');
+      const myuser = JSON.parse(itemUsuario);
       await this._getLocationAsync();
+      
+      const handle = Meteor.subscribe('mobilePanicButtonPublication', myuser.userId);
+      this.panicButtonTracker = Tracker.autorun(() => {
+          if (handle.ready()) {
+              const report = Meteor.collection('reports').findOne();
+              console.log('report', report);
+              if (report !== undefined) {
+                  this.setState({
+                    ...this.state,
+                    locked: true
+                  });
+                  console.log('reporte: ', this.state);
+              } else {
+                  this.setState({
+                    ...this.state,
+                    locked: false
+                  });
+              }
+          }
+      });
     }
     botonPanico = async () => {
       if(this.state.locked)
@@ -78,10 +100,6 @@ class Home extends Component{
                             {cancelable: false},
                     );
             }
-            this.setState({
-              ...this.state,
-              locked: false
-            });
             console.log('users.insert', err, res);
         });
 
@@ -212,11 +230,3 @@ contIcon:{
 
 });
 
-export default withTracker(params => {
-    // Meteor.subscribe('users');
-   
-    return {
-      //users: Meteor.collection('users').find(),
-      //incompleteCount: Tasks.find({ checked: { $ne: true } }).count(),
-    };
-  })(Home);

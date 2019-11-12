@@ -88,16 +88,21 @@ class RegistroUsuario extends Component{
     }
 
     verificarUsuarioNuevo(callback){
+        console.log('verificarUsuarioNuevo');
         Meteor.call('users.requestAccessByPhone',  this.state.usuario.numeroTelefono , async (err, res) => {
             if(err){
+                console.log(err);
                 callback(false);
             }else if(res) {
                 console.log('res1',res);
                 Alert.alert(
                     'Exito',
-                    'Se encontro un usuario previamente registradp',
+                    'Se encontro un usuario previamente registrado',
                     [
-                        {text: 'OK', onPress: () => this.props.navigation.navigate('Validacion')},
+                        {
+                            text: 'OK', 
+                            onPress: () => this.props.navigation.navigate('RecuperacionUsuario')
+                        },
                     ],
                     {cancelable: false},
                 );
@@ -109,21 +114,6 @@ class RegistroUsuario extends Component{
 
     }
 
-    async setInfoUsuario(response) {
-        /**
-         *  aqui enviariamos el usuario existente de el response de mateor
-         */
-
-        // this.setState({ 
-        //     usuario: {
-        //         ...this.state.usuario, 
-        //         userId: data.userId,
-        //         fichaMedica: res.recordId
-        //     }
-        // });
-        await AsyncStorage.setItem('myuser', JSON.stringify(this.state.usuario));
-
-    }
 
     guardarUsuarioNuevoMetior(){
         Meteor.call('users.insert',  this.state.usuario , async (err, res) => {
@@ -186,6 +176,12 @@ class RegistroUsuario extends Component{
             <ScrollView>
             <View style = {styles.container}>
                 <Encabezado/>
+
+                <TouchableOpacity
+                    onPress = {()=>this.props.navigation.navigate('RecuperacionUsuario')}>
+                    <Text>¡Ya estoy registrado!</Text>
+                </TouchableOpacity>
+
                 <Text style = {styles.heading}> Registro </Text>
                     
                     <Text style = {styles.titulo}> Datos telefónicos </Text>
