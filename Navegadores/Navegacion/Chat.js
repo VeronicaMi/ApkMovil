@@ -8,7 +8,7 @@ import Meteor, {
     withTracker, Tracker,
 } from "react-native-meteor";
 
-import { Ionicons } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import JavaTwilio from "./TwilioServ";
 
 
@@ -94,7 +94,7 @@ class Chat extends Component{
                 <View style={styles.textInputContainer} >
                     <TouchableOpacity style ={styles.icono}
                                       onPress = {() => alert("Hola")}>
-                        <Ionicons name="md-camera" size = {32} color = "#497580" />
+                        <Icon name="md-camera" size = {32} color = "#497580" />
                     </TouchableOpacity>
                     <TextInput style={styles.input}
                                placeholder = '  Mensaje'
@@ -103,7 +103,7 @@ class Chat extends Component{
                     />
                     <TouchableOpacity style={styles.icono}
                                       onPress ={() => this.insert()  }>
-                        <Ionicons name="md-send" size={32} color="#497580" />
+                        <Icon name="md-send" size={32} color="#497580" />
                     </TouchableOpacity>
                 </View>
 
