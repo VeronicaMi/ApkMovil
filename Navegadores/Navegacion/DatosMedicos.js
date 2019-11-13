@@ -89,7 +89,7 @@ export default class DatosMedicos extends Component{
             } else if(res){
                 Alert.alert(
                             'Exito',
-                            'Se agrego correctamente',
+                            'Guardado correctamente',
                             [
                             {text: 'OK', onPress: () => {} },
                             ],
