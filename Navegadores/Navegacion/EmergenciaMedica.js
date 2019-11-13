@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {
     StyleSheet, View, Text, Alert,
-    Picker, TextInput, AsyncStorage, NativeEventEmitter
+    Picker, ActivityIndicator, AsyncStorage, NativeEventEmitter
 } from 'react-native';
 
 import OpcionEmergencia from './OpcionEmergencia.js'
@@ -22,7 +22,10 @@ class EmergenciaMedicaView extends Component {
             MedicalEmer: '10101',
             userId: '',
             location: '',
-            hasLocationPermissions: false
+            hasLocationPermissions: false,
+            roomState: undefined,
+            showLoader: false,
+            room: ''
         };
     };
 
@@ -53,7 +56,21 @@ class EmergenciaMedicaView extends Component {
         }
         const eventEmitter = new NativeEventEmitter(JavaTwilio);
         eventEmitter.addListener('participantConnected', (event) => {
-            console.log(event) // "someValue"
+            console.log(event);
+            if (this.state.roomState && event.roomReady) {
+                this.setState({showLoader: false});
+                Meteor.call('get.usename', event.operador, (err, resp) => {
+                    if (err) {
+                        alert(err);
+                    } else {
+                        this.props.navigation.navigate('Chat', {
+                            id_final: this.state.MedicalEmer,
+                            room: this.state.room,
+                            operador: resp
+                        });
+                    }
+                });
+            }
         });
         eventEmitter.addListener('messageReceived', (event) => {
             console.log(event) // "someValue"
@@ -82,11 +99,7 @@ class EmergenciaMedicaView extends Component {
                 let stateName = await JavaTwilio.connectToRoom(response.roomName, response.token);
                 console.log('respuesta a connect: ', stateName);
                 if (stateName) {
-                    console.log(this.props);
-                    this.props.navigation.navigate('Chat', {
-                        id_final: this.state.MedicalEmer,
-                        room: response.roomName
-                    });
+                    this.setState({roomState: stateName, showLoader: true, room: response.roomName});
                 }
             } else {
                 alert(response);
@@ -135,11 +148,11 @@ class EmergenciaMedicaView extends Component {
                    onValueChange={(el) => this.updateMedicalEmer(el)}>
                    {itemsEmergencias}
                </Picker>
-
-               <OpcionEmergencia
-                   onPressChat={this.requestAssistance.bind(this)}
-               />
-
+               {this.state.showLoader
+                   ? <ActivityIndicator
+                       size="large" color="#803c3f"
+                       animating={true}/>
+                   : <OpcionEmergencia onPressChat={this.requestAssistance.bind(this)}/>}
            </View>
        );
     }

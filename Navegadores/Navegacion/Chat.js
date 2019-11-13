@@ -18,31 +18,25 @@ class Chat extends Component{
         super(props);
         const { navigation } = props;
         const room = navigation.getParam('room', undefined);
+        const operador = navigation.getParam('operador', undefined);
 
         this.state = {
-            messages: [],
             mensaje : '',
             usuario: undefined,
-            room: room
+            room: room,
+            operador: operador
         };
     };
 
     async componentDidMount() {
         const itemUsuario = await AsyncStorage.getItem('myuser');
         this.setState({usuario: itemUsuario});
-        const handle = Meteor.subscribe('reportMessagesPublication', this.state.room);
-        this.messagesTracker = Tracker.autorun(() => {
-            if (handle.ready()) {
-                const messages = Meteor.collection('messages').find({});
-                this.setState({ messages });
-            }
-        });
+        Meteor.subscribe('reportMessagesPublication', this.state.room);
         BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
     }
 
     componentWillUnmount() {
         BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
-        this.messagesTracker.stop();
     }
 
     handleBackButton = () => {
@@ -52,13 +46,14 @@ class Chat extends Component{
             [
                 {
                     text: 'Cancelar',
-                    onPress: () => ToastAndroid.showWithGravity('Continuamos en comunicación ...',
+                    onPress: () => ToastAndroid.showWithGravity('Seguimos en comunicación ...',
                         ToastAndroid.SHORT, ToastAndroid.CENTER),
                     style: 'cancel',
                 },
                 {
                     text: 'Sí, terminar', onPress: () => {
                         setTimeout(() => {
+                            this.props.navigation.pop();
                             this.props.navigation.navigate('Home');
                         }, 2000);
                         JavaTwilio.disconnect(
@@ -146,9 +141,11 @@ function Item ({message}) {
     )
 }
 
-export default withTracker(() => {
+export default withTracker((props) => {
+    const { navigation } = props;
+    const room = navigation.getParam('room', undefined);
     return {
-        messages: Meteor.collection('messages').find()
+        messages: Meteor.collection('messages').find({room})
     };
 })(Chat);
 

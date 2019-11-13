@@ -128,6 +128,7 @@ public class TwilioVideoConnector extends AppCompatActivity {
                 }
                 WritableMap params = Arguments.createMap();
                 params.putString("operador", remoteParticipant.getIdentity());
+                params.putBoolean("roomReady", true);
                 sendEvent(context, EVENT_PARTICIPANT_CONNECTED, params);
 
             }
