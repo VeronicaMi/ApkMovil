@@ -36,12 +36,16 @@ import Meteor, {
             Alert.alert('Debes ingresar un número')
         }
         else
-            this.envioCodigo();
+        {this.envioCodigo();}
+            
     }
 
     envioCodigo() {
         Meteor.call('users.requestAccessByPhone',  this.state.telefono , async (err, res) => {
             if(err){
+                this.setState({
+                    ...this.state, sended: false
+                })
                 Alert.alert(
                             'Error',
                             err.message,
@@ -50,7 +54,9 @@ import Meteor, {
                             ],
                             {cancelable: false},
                             );
+                    
             }else if(res) {
+
             }
             console.log('users.insert', err, res);
         });

@@ -179,7 +179,7 @@ class RegistroUsuario extends Component{
                 <TouchableOpacity
                     style = {{ justifyContent: 'center', alignItems: 'center',}}
                     onPress = {()=>this.props.navigation.navigate('RecuperacionUsuario')}>
-                    <Text style = {{fontSize: 20, color: '#ffffff'}}>¡Ya cuento con una cuenta!</Text>
+                    <Text style = {{fontSize: 20, color: '#ffffff'}}>¡Ya tengo una cuenta!</Text>
                 </TouchableOpacity>
                 </View>
                 <Text style = {styles.heading}> Registro </Text>
