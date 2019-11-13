@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     },
     {
       key: 's3',
-      text: 'Te llegara un codigo de confirmación vía SMS para corroborar tu identidad',
+      text: 'Te llegará un codigo de confirmación vía SMS para corroborar tu identidad',
       title: 'Confirmación',
       titleStyle: styles.title,
       textStyle: styles.text,
