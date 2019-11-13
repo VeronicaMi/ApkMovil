@@ -1,25 +1,36 @@
 //This is an example of Tab inside Navigation Drawer in React Native//
 import React, { Component } from 'react';
 //import react in our code.
-import { StyleSheet, View, Text, Alert, 
-    Picker, TextInput } from 'react-native';
+import {
+    StyleSheet, View, Text, Alert,
+    Picker, TextInput, AsyncStorage, NativeEventEmitter, ActivityIndicator
+} from 'react-native';
 // import all basic components
 import OpcionEmergencia from './OpcionEmergencia.js'
 import {createStackNavigator} from 'react-navigation';
 import Meteor from "react-native-meteor";
 import Chat from './Chat.js';
+import JavaTwilio from "./TwilioServ";
+import * as Permissions from "expo-permissions";
+import * as Location from "expo-location";
 
 class EmergenciaProteccionCivilView extends Component{
     constructor(props){
         super(props);
         this.state = {
             emergencia: '',
-            ProtecCivilEmer: '',
-            emergencias: []
+            ProtecCivilEmer: '30101',
+            emergencias: [],
+            userId: '',
+            location: '',
+            hasLocationPermissions: false,
+            roomState: undefined,
+            showLoader: false,
+            room: ''
         };
     };
-    componentDidMount() {
-        Meteor.call('get.incidentebyIdTipo',  "3" , async (err, res) => {
+    async componentDidMount() {
+        Meteor.call('get.incidentebyIdTipo',  "2" , async (err, res) => {
 
             if(err) {
                 Alert.alert(
@@ -38,48 +49,117 @@ class EmergenciaProteccionCivilView extends Component{
                 });
             }
         });
+        await this._getLocationAsync();
+        const itemUsuario = await AsyncStorage.getItem('myuser');
+        const myuser = JSON.parse(itemUsuario);
+        if (myuser) {
+            this.setState({userId: myuser.userId})
+        }
+        const eventEmitter = new NativeEventEmitter(JavaTwilio);
+        eventEmitter.addListener('participantConnected', (event) => {
+            console.log(event);
+            if (this.state.roomState && event.roomReady) {
+                this.setState({showLoader: false});
+                Meteor.call('get.usename', event.operador, (err, resp) => {
+                    if (err) {
+                        alert(err);
+                    } else {
+                        this.props.navigation.navigate('Chat', {
+                            id_final: this.state.ProtecCivilEmer,
+                            room: this.state.room,
+                            operador: resp
+                        });
+                    }
+                });
+            }
+        });
+        eventEmitter.addListener('messageReceived', (event) => {
+            console.log(event) // "someValue"
+        });
+        eventEmitter.addListener('participantDisconnected', (event) => {
+            console.log(event) // "someValue"
+        });
     }
     updateProtecCivilEmer = (ProtecCivilEmer) => {
-        this.setState({
-            ...this.state,
-            ProtecCivilEmer: ProtecCivilEmer
-        })
+        this.setState({ProtecCivilEmer})
+    };
+
+    requestAssistance() {
+        // 1. Se construye el JSON con la petición:
+        const report =  {
+            userId: this.state.userId,
+            idIncidente: this.state.ProtecCivilEmer,
+            tipoReporte: 'chat',
+            ubicacion: this.state.location
+        };
+        // 2. Solicita la creación de un room
+        Meteor.call('room.request', report, async (error, response) => {
+            if (error) {
+                alert(error.error);
+            } else if (response.status) {;
+                let stateName = await JavaTwilio.connectToRoom(response.roomName, response.token);
+                console.log('respuesta a connect: ', stateName);
+                if (stateName) {
+                    this.setState({roomState: stateName, showLoader: true, room: response.roomName});
+                }
+            } else {
+                alert(response);
+            }
+        });
     }
-  render(){
-        
-        const itemsEmergencias = this.state.emergencias.map(function (emergencia,index){
+
+    _getLocationAsync = async () => {
+        let { status } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status !== 'granted') {
+            this.setState({
+                locationResult: 'Permission to access location was denied',
+            });
+        } else {
+            this.setState({ hasLocationPermissions: true });
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        this.setState({
+            locationResult: JSON.stringify(location),
+            location: {
+                lat: location.coords.latitude,
+                lng: location.coords.longitude
+            }
+        });
+    };
+
+
+    render() {
+
+        const itemsEmergencias = this.state.emergencias.map(function (emergencia, index) {
             const {id_final, incidente} = emergencia;
-            
+
             return (
                 <Picker.Item
-                key={index}
-                label = {incidente}
-                value = {id_final}/>
+                    key={index}
+                    label={incidente}
+                    value={id_final}/>
             );
         });
 
-        return(
-            <View style = {styles.container}>
-
-            <Text style = {styles.label}>Tipo de emergencia</Text>
-
-                <Picker 
-                        style = {styles.tipoEmergencia}
-                        selectedValue = {this.state.ProtecCivilEmer} 
-                        onValueChange = {(el)=>this.updateProtecCivilEmer(el)}>
-                        {itemsEmergencias}
+        return (
+            <View style={styles.container}>
+                <Text style={styles.label}>Tipo de emergencia</Text>
+                <Picker
+                    style={styles.tipoEmergencia}
+                    selectedValue={this.state.ProtecCivilEmer}
+                    onValueChange={(el) => this.updateProtecCivilEmer(el)}>
+                    {itemsEmergencias}
                 </Picker>
-                
-                <OpcionEmergencia
-                    onPressChat={() => 
-                        this.props.navigation.navigate('Chat', {
-                            id_final: this.state.emergencia
-                        })}
-                />
+                {this.state.showLoader
+                    ? <ActivityIndicator
+                        size="large" color="#803c3f"
+                        animating={true}/>
+                    : <OpcionEmergencia onPressChat={this.requestAssistance.bind(this)}/>}
             </View>
         );
     }
-};
+}
 
 const EmergenciaProteccionCivil = createStackNavigator({
     EmergenciaProteccionCivilView:EmergenciaProteccionCivilView, 

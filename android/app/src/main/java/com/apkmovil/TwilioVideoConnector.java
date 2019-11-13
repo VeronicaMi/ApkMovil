@@ -110,6 +110,9 @@ public class TwilioVideoConnector extends AppCompatActivity {
 
             @Override
             public void onDisconnected(Room room, TwilioException e) {
+                WritableMap params = Arguments.createMap();
+                params.putString("roomState", room.getState().name());
+                sendEvent(context, EVENT_PARTICIPANT_DISCONNECTED, params);
                 localParticipant = null;
 
             }

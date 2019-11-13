@@ -75,6 +75,9 @@ class EmergenciaMedicaView extends Component {
         eventEmitter.addListener('messageReceived', (event) => {
             console.log(event) // "someValue"
         });
+        eventEmitter.addListener('participantDisconnected', (event) => {
+            console.log(event) // "someValue"
+        });
     };
 
     updateMedicalEmer = (MedicalEmer) => {
@@ -89,13 +92,11 @@ class EmergenciaMedicaView extends Component {
             tipoReporte: 'chat',
             ubicacion: this.state.location
         };
-        console.log('reporte a enviar: ', report);
         // 2. Solicita la creación de un room
         Meteor.call('room.request', report, async (error, response) => {
             if (error) {
                 alert(error.error);
-            } else if (response.status) {
-                console.log(response);
+            } else if (response.status) {;
                 let stateName = await JavaTwilio.connectToRoom(response.roomName, response.token);
                 console.log('respuesta a connect: ', stateName);
                 if (stateName) {
