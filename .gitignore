@@ -96,3 +96,4 @@ captures/
 /.idea/
 .idea/workspace.xml
 android/.gradle/4.10.1/
+ android/.gradle/buildOutputCleanup/
