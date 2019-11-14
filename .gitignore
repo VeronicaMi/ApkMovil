@@ -92,3 +92,7 @@ captures/
 .idea/modules.xml
 # Comment next line if keeping position of elements in Navigation Editor is relevant for you
 .idea/navEditor.xml
+
+/.idea/
+.idea/workspace.xml
+android/.gradle/4.10.1/
