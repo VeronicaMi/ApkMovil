@@ -115,7 +115,7 @@ import Meteor, {
                         value = {this.state.telefono} />
                     <View >
                         <TouchableOpacity 
-                        style = {{justifyContent: 'center', alignItems: 'center', flex: 1, marginRight: 50, marginLeft: 50, marginTop: 10, alignItems: 'center',
+                        style = {{justifyContent: 'center', flex: 1, marginRight: 50, marginLeft: 50, marginTop: 10, alignItems: 'center',
                         borderColor: '#803c3f', borderBottomWidth: 15, borderTopWidth: 15, backgroundColor: '#803c3f',}}
                         onPress={()=> this.solicitarCodigoValidacion()}>
                             <Text style = {{fontSize: 20, color: '#ffffff'}}> Verificar número telefónico</Text>
@@ -136,7 +136,7 @@ import Meteor, {
                         value = {this.state.codigo} />
                     <View>
                         <TouchableOpacity 
-                            style = {{flex: 1, marginRight: 50, marginLeft: 50, marginTop: 10, alignItems: 'center',
+                            style = {{flex: 1, marginRight: 50, marginLeft: 50, marginTop: 10,
                             borderColor: '#803c3f', borderBottomWidth: 15, borderTopWidth: 15, backgroundColor: '#803c3f',justifyContent: 'center', alignItems: 'center'}}
                             onPress = {()=>this.validarCodigoVerificacion()}>
                             <Text style = {{fontSize: 20, color: '#ffffff'}}> Verficar código</Text>

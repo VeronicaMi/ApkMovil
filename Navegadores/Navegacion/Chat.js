@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet, Text, View, TextInput, Alert,
+    StyleSheet, Text, View, TextInput, Alert, Image,
     TouchableOpacity, AsyncStorage, FlatList, BackHandler,
     ToastAndroid
 } from 'react-native';
@@ -10,6 +10,7 @@ import Meteor, {
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import JavaTwilio from "./TwilioServ";
+
 
 
 class Chat extends Component{
@@ -103,7 +104,10 @@ class Chat extends Component{
                     />
                     <TouchableOpacity style={styles.icono}
                                       onPress ={() => this.insert()  }>
-                        <Icon name="md-send" size={32} color="#497580" />
+                        <Image
+                            style={{height: 30, width:30}}
+                            source={{uri: 'https://i.postimg.cc/pXSwjZd6/Envio.png'}}
+                        />
                     </TouchableOpacity>
                 </View>
 

@@ -112,13 +112,15 @@ import Meteor, {
                     <Text style={styles.label}>{nombreCompleto}</Text>
                     <Text style={styles.label}>{numeroTelefonico}</Text>
                     <TouchableOpacity onPress={() => editContacto(contacto)}>
-                    <Feather style={styles.label} name="edit" size = {32} color = "#497580" />
+                        <Image
+                            style={{margin: 20, height: 30, width:30}}
+                            source={{uri: 'https://i.postimg.cc/9Fq4WbHT/Editar.png'}}
+                        />
                     </TouchableOpacity>
                 </View>
             </View>
             );
             });
-        let display = this.state.Nombre;
         return(
             <ScrollView>
                 <View style = {styles.container}>
